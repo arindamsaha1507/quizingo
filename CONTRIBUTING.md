@@ -71,15 +71,15 @@ Application code and generated documentation must read these values from the con
 
 [`AGENTS.md`](AGENTS.md) is the authoritative specification for quiz behavior, formats, answering, passing, cell ownership, Black Holes, and Bingo rules. Keep implementations and user documentation consistent with it.
 
-### Generated guide
+### Config-synchronized guide
 
-[`GUIDE.md`](GUIDE.md) is generated from [`GUIDE.template.md`](GUIDE.template.md). Edit the template rather than the rendered guide, use config-path tokens for scoring values, and regenerate it with:
+[`GUIDE.md`](GUIDE.md) is both the readable guide and its editable source. Edit explanatory prose directly in that file. Topic-map content and scoring values enclosed by `quiz-config` markers are synchronized from [`quiz.config.json`](quiz.config.json); do not edit the generated marker contents manually. Synchronize them with:
 
 ```bash
 node scripts/render-guide.mjs
 ```
 
-Commit both the template change and the regenerated guide. Before opening a PR, rerun the command and confirm it creates no unexpected diff.
+Commit the config and synchronized guide changes together. Before opening a PR, rerun the command and confirm it creates no unexpected diff.
 
 ## Validation
 
@@ -95,7 +95,7 @@ git diff
 
 Confirm that:
 
-- the guide renders without unresolved template tokens;
+- the guide synchronizes without obsolete template tokens or invalid topic assignments;
 - topic assignments still cover the intended cells;
 - scoring values shown in the guide match the config;
 - rules in the guide and `AGENTS.md` do not contradict one another; and

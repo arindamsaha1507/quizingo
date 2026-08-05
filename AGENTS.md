@@ -5,8 +5,8 @@
   1. Create the quiz content, including questions and clues.
   2. Present that content as an interactive quiz.
 - Do not change or build anything until the user explicitly says to proceed. While the user is providing instructions, only record those instructions in this file.
-- `GUIDE.md` is generated from `GUIDE.template.md` by running `node scripts/render-guide.mjs`.
-- Do not edit scoring values in `GUIDE.md` or `GUIDE.template.md` manually; use config-path tokens in the template and render them from `quiz.config.json`.
+- `GUIDE.md` is the single source document for the user guide. Running `node scripts/render-guide.mjs` synchronizes its marked config-driven sections with `quiz.config.json`.
+- Edit explanatory prose directly in `GUIDE.md`. Do not edit content between `quiz-config` markers manually; change `quiz.config.json` and run the renderer instead.
 
 ## Quiz Format
 
@@ -40,7 +40,7 @@
 
 The labels below reflect the display names configured in `quiz.config.json`.
 
-**Legend:** <span style="color:#7c3aed">● Border</span> · <span style="color:#0f766e">● Renaming</span> · <span style="color:#b45309">● Mughals</span> · <span style="color:#2563eb">● Scriptures</span> · <span style="color:#be185d">● Political Thinkers</span> · <span style="color:#16803c">● Numbers</span> · <span style="color:#dc2626">● Connector</span>
+**Legend:** <span style="color:#7c3aed">● Border</span> · <span style="color:#0f766e">● Renaming</span> · <span style="color:#b45309">● Structures</span> · <span style="color:#2563eb">● Scriptures</span> · <span style="color:#be185d">● Political Thinkers</span> · <span style="color:#16803c">● Numbers</span> · <span style="color:#dc2626">● Connector</span>
 
 | | | | | |
 |---|---|---|---|---|
