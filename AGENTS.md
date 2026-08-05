@@ -40,7 +40,7 @@
 
 The labels below reflect the display names configured in `quiz.config.json`.
 
-**Legend:** <span style="color:#7c3aed">● Border</span> · <span style="color:#0f766e">● Renaming</span> · <span style="color:#b45309">● Mughals</span> · <span style="color:#2563eb">● Scriptures</span> · <span style="color:#be185d">● Political Thinkers</span> · <span style="color:#16803c">● Numbers</span> · <span style="color:#dc2626">● Connector</span>
+**Legend:** <span style="color:#7c3aed">● Border</span> · <span style="color:#0f766e">● Renaming</span> · <span style="color:#b45309">● Structures</span> · <span style="color:#2563eb">● Scriptures</span> · <span style="color:#be185d">● Political Thinkers</span> · <span style="color:#16803c">● Numbers</span> · <span style="color:#dc2626">● Connector</span>
 
 | | | | | |
 |---|---|---|---|---|

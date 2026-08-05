@@ -24,7 +24,7 @@ Every numbered cell has both a **topic** and a **question format**. These are tw
 
 The topic names and cell assignments come from `quiz.config.json`.
 
-**Legend:** <span style="color:#7c3aed">● Border</span> · <span style="color:#0f766e">● Renaming</span> · <span style="color:#b45309">● Mughals</span> · <span style="color:#2563eb">● Scriptures</span> · <span style="color:#be185d">● Political Thinkers</span> · <span style="color:#16803c">● Numbers</span> · <span style="color:#dc2626">● Connector</span>
+**Legend:** <span style="color:#7c3aed">● Border</span> · <span style="color:#0f766e">● Renaming</span> · <span style="color:#b45309">● Structures</span> · <span style="color:#2563eb">● Scriptures</span> · <span style="color:#be185d">● Political Thinkers</span> · <span style="color:#16803c">● Numbers</span> · <span style="color:#dc2626">● Connector</span>
 
 | | | | | |
 |---|---|---|---|---|
@@ -40,7 +40,7 @@ The topics occupy recognizable parts of the grid:
 |---|---|---|
 | Corners | Border | 1, 5, 21, 25 |
 | Top | Renaming | 2, 3, 4, 8 |
-| Left | Mughals | 6, 11, 12, 16 |
+| Left | Structures | 6, 11, 12, 16 |
 | Right | Scriptures | 10, 14, 15, 20 |
 | Bottom | Political Thinkers | 18, 22, 23, 24 |
 | Inner diagonals | Numbers | 7, 9, 17, 19 |
