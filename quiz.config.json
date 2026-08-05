@@ -1,0 +1,52 @@
+{
+  "topics": {
+    "corners": {
+      "name": "Border",
+      "questionNumbers": [1, 5, 21, 25]
+    },
+    "top": {
+      "name": "Renaming",
+      "questionNumbers": [2, 3, 4, 8]
+    },
+    "left": {
+      "name": "Mughals",
+      "questionNumbers": [6, 11, 12, 16]
+    },
+    "right": {
+      "name": "Scriptures",
+      "questionNumbers": [10, 14, 15, 20]
+    },
+    "bottom": {
+      "name": "Political Thinkers",
+      "questionNumbers": [18, 22, 23, 24]
+    },
+    "diagonals": {
+      "name": "Numbers",
+      "questionNumbers": [7, 9, 17, 19]
+    },
+    "centre": {
+      "name": "Connector",
+      "questionNumbers": [13]
+    }
+  },
+  "scoring": {
+    "wordle": {
+      "clueRewards": [15, 10, 5]
+    },
+    "ladders": {
+      "clueRewards": [15, 10, 5]
+    },
+    "stringTheory": {
+      "clueRewards": [20, 15, 10, 5]
+    },
+    "forbidden": {
+      "reward": 25
+    },
+    "pass": {
+      "reward": 5
+    },
+    "bingo": {
+      "reward": 25
+    }
+  }
+}
