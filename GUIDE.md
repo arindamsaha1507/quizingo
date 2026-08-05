@@ -2,7 +2,7 @@
 
 Quizingo is a two-team quiz played on a 5-by-5 grid. The board contains 25 questions arranged into topical regions and four question formats. Teams compete for question points, claim cells by answering correctly, and earn bonuses by completing Bingo patterns.
 
-This guide explains the current game rules for players and quizmasters. The values in [`quiz.config.json`](quiz.config.json) are the source of truth for topic assignments and scoring. This document is generated from `GUIDE.template.md` by running `node scripts/render-guide.mjs`.
+This guide explains the current game rules for players and quizmasters. The values in [`quiz.config.json`](quiz.config.json) are the source of truth for topic assignments and scoring. Running `node scripts/render-guide.mjs` synchronizes the config-driven parts of this document.
 
 ## At a Glance
 
@@ -12,8 +12,8 @@ This guide explains the current game rules for players and quizmasters. The valu
 - Opening a question commits the team to answering it.
 - The active team may answer after every revealed clue without losing points for an incorrect attempt.
 - A correct answer earns points and ownership of that cell.
-- A missed question passes to the opposing team for 5 points, with every remaining clue revealed first.
-- Completing a qualifying line or region earns a 25-point Bingo bonus.
+- A missed question passes to the opposing team for <!-- quiz-config:scoring.pass.reward -->5<!-- /quiz-config --> points, with every remaining clue revealed first.
+- Completing a qualifying line or region earns a <!-- quiz-config:scoring.bingo.reward -->25<!-- /quiz-config -->-point Bingo bonus.
 - Question 13 is the final **Forbidden** question and becomes available only after the other 24 questions have been attempted.
 
 ## The Board
@@ -24,6 +24,7 @@ Every numbered cell has both a **topic** and a **question format**. These are tw
 
 The topic names and cell assignments come from `quiz.config.json`.
 
+<!-- quiz-config:start topic-map -->
 **Legend:** <span style="color:#7c3aed">● Border</span> · <span style="color:#0f766e">● Renaming</span> · <span style="color:#b45309">● Structures</span> · <span style="color:#2563eb">● Scriptures</span> · <span style="color:#be185d">● Political Thinkers</span> · <span style="color:#16803c">● Numbers</span> · <span style="color:#dc2626">● Connector</span>
 
 | | | | | |
@@ -45,6 +46,7 @@ The topics occupy recognizable parts of the grid:
 | Bottom | Political Thinkers | 18, 22, 23, 24 |
 | Inner diagonals | Numbers | 7, 9, 17, 19 |
 | Centre | Connector | 13 |
+<!-- quiz-config:end topic-map -->
 
 ### Format Map
 
@@ -73,7 +75,7 @@ Used for Questions **1, 5, 21, and 25**.
 - Every clue has the same number of letters as the answer.
 - After each clue, the active team may submit one guess of the required length.
 - Clues and submitted guesses receive standard Wordle colouring, including exact repeated-letter handling.
-- Solving after the first, second, or third clue earns **15, 10, or 5 points**, respectively.
+- Solving after the first, second, or third clue earns **<!-- quiz-config:scoring.wordle.clueRewards:words -->15, 10, or 5<!-- /quiz-config --> points**, respectively.
 
 ### Ladders
 
@@ -81,9 +83,9 @@ Used for every normal question that is not Wordle or String Theory.
 
 - Three clues lead to one answer.
 - Clues become progressively easier.
-- The first revealed clue makes **15 points** available.
-- Revealing the second clue reduces the available score to **10 points**.
-- Revealing the third clue reduces it to **5 points**.
+- The first revealed clue makes **<!-- quiz-config:scoring.ladders.clueRewards.0 -->15<!-- /quiz-config --> points** available.
+- Revealing the second clue reduces the available score to **<!-- quiz-config:scoring.ladders.clueRewards.1 -->10<!-- /quiz-config --> points**.
+- Revealing the third clue reduces it to **<!-- quiz-config:scoring.ladders.clueRewards.2 -->5<!-- /quiz-config --> points**.
 
 ### String Theory
 
@@ -92,17 +94,17 @@ Used for Questions **7, 9, 17, and 19**.
 - Four clues share a common connection.
 - Clues are revealed one at a time.
 - The active team may identify the connection after each reveal.
-- Solving after the first, second, third, or fourth clue earns **20, 15, 10, or 5 points**, respectively.
+- Solving after the first, second, third, or fourth clue earns **<!-- quiz-config:scoring.stringTheory.clueRewards:words -->20, 15, 10, or 5<!-- /quiz-config --> points**, respectively.
 - The connection can be any shared theme; it does not have to be a literal scientific theory.
 
 ### Forbidden
 
-Used only for Question **13**, whose topic is **Connector**.
+Used only for Question **<!-- quiz-config:topics.centre.questionNumbers.0 -->13<!-- /quiz-config -->**, whose topic is **<!-- quiz-config:topics.centre.name -->Connector<!-- /quiz-config -->**.
 
 - Question 13 stays locked until all other 24 questions have been opened and answered.
 - It asks for the common theme connecting the answers to those 24 questions.
 - Both teams may answer simultaneously; it is not part of the normal turn order.
-- Only the first team to answer correctly earns **25 points** and claims the centre cell.
+- Only the first team to answer correctly earns **<!-- quiz-config:scoring.forbidden.reward -->25<!-- /quiz-config --> points** and claims the centre cell.
 - If neither team answers correctly, neither team claims the cell.
 
 ## How a Normal Turn Works
@@ -112,7 +114,7 @@ Used only for Question **13**, whose topic is **Connector**.
 3. The active team submits an answer. Once opened, the question cannot be abandoned without an answer.
 4. If the answer is incorrect, no points are deducted and the correct answer remains hidden. The team may reveal the next clue and answer again at that clue's available value.
 5. If the active team answers correctly, the quizmaster immediately reveals every remaining clue, reveals the correct answer, and awards the points available when the answer was given. A custom-points override is available for exceptional cases.
-6. If the active team does not answer correctly, the quizmaster reveals every remaining clue and passes the question to the opposing team for a flat **5 points**.
+6. If the active team does not answer correctly, the quizmaster reveals every remaining clue and passes the question to the opposing team for a flat **<!-- quiz-config:scoring.pass.reward -->5<!-- /quiz-config --> points**.
 7. After the pass attempt, the quizmaster reveals the correct answer, completes the question, and continues the normal alternating turn order.
 
 A non-Forbidden question counts as attempted only after it has been opened and an answer has been submitted.
@@ -121,7 +123,7 @@ A non-Forbidden question counts as attempted only after it has been opened and a
 
 A pass gives the opposing team a chance to answer the same question. Before the pass attempt, the quizmaster reveals all clues that the active team had not yet seen. The pass does not insert or remove a regular turn: the next normal turn still belongs to whichever team was already due to play next.
 
-For example, Team A opens a question on its turn and answers incorrectly. The question passes to Team B for 5 points. After the question is resolved, Team B still takes the next regular turn.
+For example, Team A opens a question on its turn and answers incorrectly. The question passes to Team B for <!-- quiz-config:scoring.pass.reward -->5<!-- /quiz-config --> points. After the question is resolved, Team B still takes the next regular turn.
 
 ### Claiming Cells
 
@@ -136,28 +138,28 @@ The quiz automatically totals question awards and Bingo bonuses entered or trigg
 
 | Event | Points |
 |---|---:|
-| Wordle, after clues 1 / 2 / 3 | 15 / 10 / 5 |
-| Ladders, after clues 1 / 2 / 3 | 15 / 10 / 5 |
-| String Theory, after clues 1 / 2 / 3 / 4 | 20 / 15 / 10 / 5 |
-| Correct pass answer | 5 |
-| Forbidden | 25 |
-| Each distinct Bingo | 25 |
+| Wordle, after clues 1 / 2 / 3 | <!-- quiz-config:scoring.wordle.clueRewards:slashes -->15 / 10 / 5<!-- /quiz-config --> |
+| Ladders, after clues 1 / 2 / 3 | <!-- quiz-config:scoring.ladders.clueRewards:slashes -->15 / 10 / 5<!-- /quiz-config --> |
+| String Theory, after clues 1 / 2 / 3 / 4 | <!-- quiz-config:scoring.stringTheory.clueRewards:slashes -->20 / 15 / 10 / 5<!-- /quiz-config --> |
+| Correct pass answer | <!-- quiz-config:scoring.pass.reward -->5<!-- /quiz-config --> |
+| Forbidden | <!-- quiz-config:scoring.forbidden.reward -->25<!-- /quiz-config --> |
+| Each distinct Bingo | <!-- quiz-config:scoring.bingo.reward -->25<!-- /quiz-config --> |
 
 By default, the quizmaster may award only the value available at the current reveal stage. The custom-points override should be used only when an exceptional ruling requires a different award.
 
 ## Bingo
 
-Teams earn Bingo bonuses by claiming complete patterns on the 5-by-5 grid. A Bingo adds **25 points** and does not end the game.
+Teams earn Bingo bonuses by claiming complete patterns on the 5-by-5 grid. A Bingo adds **<!-- quiz-config:scoring.bingo.reward -->25<!-- /quiz-config --> points** and does not end the game.
 
 ### Qualifying Patterns
 
 - Any of the five complete horizontal rows
 - Any of the five complete vertical columns
 - Either full corner-to-corner diagonal: **1–7–13–19–25** or **5–9–13–17–21**
-- The Top region: **2, 3, 4, and 8**
-- The Left region: **6, 11, 12, and 16**
-- The Right region: **10, 14, 15, and 20**
-- The Bottom region: **18, 22, 23, and 24**
+- The Top region: **<!-- quiz-config:topics.top.questionNumbers:ands -->2, 3, 4, and 8<!-- /quiz-config -->**
+- The Left region: **<!-- quiz-config:topics.left.questionNumbers:ands -->6, 11, 12, and 16<!-- /quiz-config -->**
+- The Right region: **<!-- quiz-config:topics.right.questionNumbers:ands -->10, 14, 15, and 20<!-- /quiz-config -->**
+- The Bottom region: **<!-- quiz-config:topics.bottom.questionNumbers:ands -->18, 22, 23, and 24<!-- /quiz-config -->**
 
 Only the two full corner-to-corner diagonals count as diagonal Bingo patterns. The four corners by themselves and the four inner-diagonal cells by themselves are not Bingo patterns.
 
@@ -188,7 +190,7 @@ Example: claiming Questions 1–5 completes the first row and earns one Bingo. L
 - For Wordle, enforce the answer length and apply standard letter colouring.
 - Record the submitted answer before revealing the correct answer.
 - Award the available score or deliberately use the custom override.
-- If the active team does not answer correctly, reveal all remaining clues and offer the opposing team the 5-point pass.
+- If the active team does not answer correctly, reveal all remaining clues and offer the opposing team the <!-- quiz-config:scoring.pass.reward -->5<!-- /quiz-config -->-point pass.
 - Assign the cell to the team that answered correctly, or leave it unclaimed.
 - Check for newly completed, previously unawarded Bingo patterns.
 
@@ -202,6 +204,6 @@ Example: claiming Questions 1–5 completes the first row and earns one Bingo. L
 
 ## Quick Example
 
-Team A chooses Question 7, a String Theory question. The quizmaster reveals two clues, and Team A submits the correct connection. Team A receives **15 points** and claims cell 7.
+Team A chooses Question 7, a String Theory question. The quizmaster reveals two clues, and Team A submits the correct connection. Team A receives **<!-- quiz-config:scoring.stringTheory.clueRewards.1 -->15<!-- /quiz-config --> points** and claims cell 7.
 
-If Team A had answered incorrectly, Team B could have attempted the same question for **5 points**. A correct pass would give Team B the points and cell 7. Team B would still take the next regular turn because the pass does not alter the alternating turn order.
+If Team A had answered incorrectly, Team B could have attempted the same question for **<!-- quiz-config:scoring.pass.reward -->5<!-- /quiz-config --> points**. A correct pass would give Team B the points and cell 7. Team B would still take the next regular turn because the pass does not alter the alternating turn order.
