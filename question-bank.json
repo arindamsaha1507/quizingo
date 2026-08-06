@@ -29,6 +29,16 @@
         "BENGAL",
         "MOTHER"
       ]
+    },
+    {
+      "number": 25,
+      "format": "wordle",
+      "answer": "LODHI",
+      "clues": [
+        "RULER",
+        "SUNNI",
+        "DELHI"
+      ]
     }
   ]
 }
