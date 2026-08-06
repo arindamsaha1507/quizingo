@@ -9,6 +9,26 @@
         "EDICTS",
         "EMBLEM"
       ]
+    },
+    {
+      "number": 5,
+      "format": "wordle",
+      "answer": "MATHURA",
+      "clues": [
+        "KRISHNA",
+        "TEMPLES",
+        "PILGRIM"
+      ]
+    },
+    {
+      "number": 21,
+      "format": "wordle",
+      "answer": "TERESA",
+      "clues": [
+        "CHRIST",
+        "BENGAL",
+        "MOTHER"
+      ]
     }
   ]
 }
