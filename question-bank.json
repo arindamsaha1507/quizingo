@@ -1,0 +1,14 @@
+{
+  "questions": [
+    {
+      "number": 1,
+      "format": "wordle",
+      "answer": "ASHOKA",
+      "clues": [
+        "ODISHA",
+        "EDICTS",
+        "EMBLEM"
+      ]
+    }
+  ]
+}
