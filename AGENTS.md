@@ -5,6 +5,7 @@
   1. Create the quiz content, including questions and clues.
   2. Present that content as an interactive quiz.
 - Do not change or build anything until the user explicitly says to proceed. While the user is providing instructions, only record those instructions in this file.
+- `question-bank.json` is the sole source of truth for question answers and clues. Interactive quiz implementations must load question content from that file; do not duplicate question content in this file.
 - `GUIDE.md` is the single source document for the user guide. Running `node scripts/render-guide.mjs` synchronizes its marked config-driven sections with `quiz.config.json`.
 - Edit explanatory prose directly in `GUIDE.md`. Do not edit content between `quiz-config` markers manually; change `quiz.config.json` and run the renderer instead.
 
@@ -55,6 +56,7 @@ The labels below reflect the display names configured in `quiz.config.json`.
 ### Wordle
 
 - Provide three one-word clues leading to a one-word answer.
+- Store the answer and exactly three clues in the question bank.
 - Each clue and its answer contain the same number of letters.
 - Color the letters of the clues using the exact standard Wordle matching rules, including correct repeated-letter handling, to show their relationship to the answer.
 - Reveal the three clues one at a time.
