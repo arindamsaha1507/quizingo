@@ -21,6 +21,50 @@
       ]
     },
     {
+      "number": 7,
+      "format": "stringTheory",
+      "answer": "Months with 30 days",
+      "clues": [
+        "April",
+        "June",
+        "September",
+        "November"
+      ]
+    },
+    {
+      "number": 9,
+      "format": "stringTheory",
+      "answer": "Famous books with five in the title",
+      "clues": [
+        "Parameshwar",
+        "Tantra",
+        "Famous",
+        "Someone"
+      ]
+    },
+    {
+      "number": 17,
+      "format": "stringTheory",
+      "answer": "Hindi film franchises with exactly three released movies to date",
+      "clues": [
+        "Jolly LLB",
+        "Bhool Bhulaiyaa",
+        "Dhoom",
+        "Race"
+      ]
+    },
+    {
+      "number": 19,
+      "format": "stringTheory",
+      "answer": "Films with twelve in the title",
+      "clues": [
+        "Fail",
+        "Angry Men",
+        "Years of a Slave",
+        "Eyes and Hands"
+      ]
+    },
+    {
       "number": 21,
       "format": "wordle",
       "answer": "TERESA",
