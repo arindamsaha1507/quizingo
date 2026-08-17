@@ -13,6 +13,7 @@ This guide explains the current game rules for players and quizmasters. The valu
 - The active team may answer after every revealed clue without losing points for an incorrect attempt.
 - A correct answer earns points and ownership of that cell.
 - A missed question passes to the opposing team for <!-- quiz-config:scoring.pass.reward -->5<!-- /quiz-config --> points, with every remaining clue revealed first.
+- If both teams miss a question, its cell becomes a permanent **Black Hole**.
 - Completing a qualifying line or region earns a <!-- quiz-config:scoring.bingo.reward -->25<!-- /quiz-config -->-point Bingo bonus.
 - Question 13 is the final **Forbidden** question and becomes available only after the other 24 questions have been attempted.
 
@@ -117,7 +118,7 @@ Used only for Question **<!-- quiz-config:topics.centre.questionNumbers.0 -->13<
 6. If the active team does not answer correctly, the quizmaster reveals every remaining clue and passes the question to the opposing team for a flat **<!-- quiz-config:scoring.pass.reward -->5<!-- /quiz-config --> points**.
 7. After the pass attempt, the quizmaster reveals the correct answer, completes the question, and continues the normal alternating turn order.
 
-A non-Forbidden question counts as attempted only after it has been opened and an answer has been submitted.
+A non-Forbidden question counts as attempted only after it has been opened and an answer has been submitted. This includes questions that end as Black Holes.
 
 ### Passing and Turn Order
 
@@ -129,7 +130,8 @@ For example, Team A opens a question on its turn and answers incorrectly. The qu
 
 - If the active team answers correctly, it claims the cell.
 - If the opposing team answers correctly on a pass, it claims the cell.
-- If neither team answers correctly, the cell remains unclaimed.
+- If neither team answers correctly, the cell becomes a permanent **Black Hole** that belongs to neither team.
+- A Black Hole is a separate blocked state, not an unopened, open, or team-owned cell.
 - Points and cell ownership normally go to the same successful team.
 
 ## Scoring
@@ -163,6 +165,8 @@ Teams earn Bingo bonuses by claiming complete patterns on the 5-by-5 grid. A Bin
 
 Only the two full corner-to-corner diagonals count as diagonal Bingo patterns. The four corners by themselves and the four inner-diagonal cells by themselves are not Bingo patterns.
 
+A Black Hole cannot contribute to any Bingo pattern for either team. Any row, column, diagonal, or directional region that contains a Black Hole is permanently impossible for both teams.
+
 ### Bingo Awards
 
 - Each distinct pattern can be awarded once per team.
@@ -191,7 +195,7 @@ Example: claiming Questions 1–5 completes the first row and earns one Bingo. L
 - Record the submitted answer before revealing the correct answer.
 - Award the available score or deliberately use the custom override.
 - If the active team does not answer correctly, reveal all remaining clues and offer the opposing team the <!-- quiz-config:scoring.pass.reward -->5<!-- /quiz-config -->-point pass.
-- Assign the cell to the team that answered correctly, or leave it unclaimed.
+- Assign the cell to the team that answered correctly, or mark it as a Black Hole if neither team solves it.
 - Check for newly completed, previously unawarded Bingo patterns.
 
 ### At the End
