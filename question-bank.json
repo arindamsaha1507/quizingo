@@ -21,6 +21,24 @@
       ]
     },
     {
+      "number": 6,
+      "format": "ladders",
+      "answer": "Baoli",
+      "acceptedAnswers": [
+        "Baori",
+        "Bawdi",
+        "Bawri",
+        "Bavadi",
+        "Bavdi",
+        "Vav"
+      ],
+      "clues": [
+        "According to one traditional Sanskrit derivation, its ancestral name described a place where lotuses and similar plants are sown. This class of architecture served as a vital lifeline across the Indian subcontinent, with antecedents traceable to the Indus Valley Civilisation.",
+        "Related structures are found throughout the world and provide communities with a resource essential to daily life. Those discussed here incorporated a deceptively simple innovation: people could approach it directly, even as the resource’s level rose and fell with the seasons.",
+        "One of the grandest surviving examples of this tradition was built in the eleventh century at Patan and is now a UNESCO World Heritage monument. It appears on the reverse of India’s lavender ₹100 banknote in the Mahatma Gandhi (New) Series."
+      ]
+    },
+    {
       "number": 7,
       "format": "stringTheory",
       "answer": "Months with 30 days",
@@ -40,6 +58,49 @@
         "Tantra",
         "Famous",
         "Someone"
+      ]
+    },
+    {
+      "number": 11,
+      "format": "ladders",
+      "answer": "Biswa Bangla",
+      "acceptedAnswers": [
+        "Bishwa Bangla",
+        "Bishwo Bangla"
+      ],
+      "clues": [
+        "In 2018, construction of the XY Gate was completed in an Indian state seeking to project a modern, globally connected identity. Despite its name, it consists of two intersecting arches supporting a circular ring that houses a viewing gallery and a suspended restaurant.",
+        "The gate’s original design included a huge globe suspended at its centre. During installation, however, the lifting chain snapped and the globe crashed to the ground, forcing the plan to be abandoned. The globe motif nevertheless appeared in the state’s new emblem adopted in 2018, where it remained until 2026, when the government reverted to the Lion Capital of Ashoka.",
+        "The structure stands in a region renowned for a distinctive architectural tradition in which buildings could feature two, four, eight, or even sixteen sloping roof sections. This tradition ultimately gave the English-speaking world the word for a typically single-storey house."
+      ]
+    },
+    {
+      "number": 12,
+      "format": "ladders",
+      "answer": "Talkatora Stadium",
+      "acceptedAnswers": [
+        "Talkatora Indoor Stadium",
+        "Tal Katora Stadium"
+      ],
+      "clues": [
+        "In 1737, Peshwa Bajirao I raided Delhi, then under the Mughal emperor Muhammad Shah. His forces clashed with a Mughal army near a bowl-shaped pond. Which modern-day stadium takes its name from this historic site?",
+        "In 2010, this indoor stadium hosted the boxing competition at the Commonwealth Games, where India won three gold and four bronze medals but no silver.",
+        "Besides hosting boxers, this stadium has also hosted Zakir Khan for a performance of Haq Se Single, the comedy show associated with his famous ‘sakht launda’ persona."
+      ]
+    },
+    {
+      "number": 16,
+      "format": "ladders",
+      "answer": "Kalibari",
+      "acceptedAnswers": [
+        "Kali Bari",
+        "New Delhi Kali Bari",
+        "Delhi Kali Bari"
+      ],
+      "clues": [
+        "After British India shifted its capital from Calcutta to Delhi in 1911, the growing Bengali community in the new capital sought a permanent religious and cultural home. Its Durga Puja, first held on Baird Road in 1925, eventually outgrew the premises. More than 300 Bengalis petitioned the government for land, and in 1931 the community received an acre on which to establish an institution. What is the institution called?",
+        "The institution’s governing committee was formalised in 1935, with Subhas Chandra Bose as its first president. That same year, three years before he first became president of the Indian National Congress, he addressed a large gathering there.",
+        "In the Devi Mahatmya, a dark and fearsome goddess emerges from Ambika’s forehead in the midst of battle. She later helps destroy Raktabija, whose every drop of blood spilled on the ground produces another demon like him, by catching and drinking his blood before it can fall. Many places of worship across India, including the one being discussed here, take their name from her."
       ]
     },
     {
