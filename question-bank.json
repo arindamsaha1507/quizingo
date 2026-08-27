@@ -11,6 +11,54 @@
       ]
     },
     {
+      "number": 2,
+      "format": "ladders",
+      "answer": "Lord Dalhousie",
+      "acceptedAnswers": [
+        "Dalhousie",
+        "Marquess of Dalhousie",
+        "James Andrew Broun-Ramsay",
+        "James Broun-Ramsay"
+      ],
+      "clues": [
+        "In 1848, this Governor-General of India began a tenure marked by the aggressive application of the Doctrine of Lapse. Under this policy, the East India Company could refuse to recognise an adopted successor and annex a dependent princely state whose ruler died without a natural male heir. Satara, Jhansi and Nagpur were annexed in this manner, while Awadh was taken separately on the stated grounds of misgovernment. Who was he?",
+        "During his tenure, Sir Charles Wood sent the landmark Education Despatch of 1854 to the Government of India. It recommended provincial education departments, grants-in-aid, teacher training and universities in Calcutta, Bombay and Madras.",
+        "A Himachal Pradesh hill station established as a British retreat in 1854 was named after his title. Subhas Chandra Bose spent several months there in 1937, and proposals have since been made to rename it after him."
+      ]
+    },
+    {
+      "number": 3,
+      "format": "ladders",
+      "answer": "Aurangzeb",
+      "acceptedAnswers": [
+        "Aurangzeb Alamgir",
+        "Alamgir I",
+        "Muhi al-Din Muhammad",
+        "Muhi-ud-Din Muhammad"
+      ],
+      "clues": [
+        "Born Muhi al-Din Muhammad, this Mughal prince assumed the regnal title Alamgir upon ascending the throne in 1658. Which emperor is he better known as?",
+        "In 1681, he moved into the Deccan and spent the final twenty-six years of his life there, directing campaigns against the Marathas and annexing the sultanates of Bijapur and Golconda.",
+        "The Maharashtra city that bore his name was officially renamed Chhatrapati Sambhajinagar in 2023. Nearby, at Khuldabad, he lies buried in a remarkably simple open-air grave."
+      ]
+    },
+    {
+      "number": 4,
+      "format": "ladders",
+      "answer": "Dara Shikoh",
+      "acceptedAnswers": [
+        "Dara Shukoh",
+        "Dara Shikuh",
+        "Dara Shukuh",
+        "Dara Sikoh"
+      ],
+      "clues": [
+        "This Mughal prince explored common ground between Sufi and Vedantic thought in Majma-ul-Bahrain, meaning ‘The Confluence of the Two Oceans’. He also produced Sirr-i-Akbar, a Persian rendering of more than fifty Upanishads. Who was he?",
+        "The eldest son and chosen successor of Shah Jahan, he lost the ensuing war of succession, was tried for heresy and executed in Delhi in 1659. He was subsequently buried in Humayun’s Tomb.",
+        "Historian Supriya Gandhi titled her biography of this prince The Emperor Who Never Was, alluding to the Mughal throne for which he had been prepared but never occupied."
+      ]
+    },
+    {
       "number": 5,
       "format": "wordle",
       "answer": "MATHURA",
@@ -50,6 +98,22 @@
       ]
     },
     {
+      "number": 8,
+      "format": "ladders",
+      "answer": "A.P.J. Abdul Kalam",
+      "acceptedAnswers": [
+        "APJ Abdul Kalam",
+        "A P J Abdul Kalam",
+        "Abdul Kalam",
+        "Avul Pakir Jainulabdeen Abdul Kalam"
+      ],
+      "clues": [
+        "In 1980, as project director of SLV-III, this aerospace scientist helped place the Rohini RS-1 satellite into orbit using India’s first indigenous satellite launch vehicle. Who was he?",
+        "He later led the Integrated Guided Missile Development Programme, overseeing the development and operationalisation of missiles such as Agni and Prithvi. As Scientific Adviser to the Defence Minister, he was also closely involved in the Pokhran-II nuclear tests of 1998.",
+        "He served as India’s eleventh President from 2002 to 2007 and died while delivering a lecture at IIM Shillong in 2015. Later that year, Odisha’s Wheeler Island, a missile-testing site, was renamed in his honour."
+      ]
+    },
+    {
       "number": 9,
       "format": "stringTheory",
       "answer": "Famous books with five in the title",
@@ -58,6 +122,21 @@
         "Tantra",
         "Famous",
         "Someone"
+      ]
+    },
+    {
+      "number": 10,
+      "format": "ladders",
+      "answer": "Shanti",
+      "acceptedAnswers": [
+        "Shantiḥ",
+        "Śānti",
+        "Śāntiḥ"
+      ],
+      "clues": [
+        "The twelfth and longest book of the Mahabharata is dominated by Bhishma’s teachings to Yudhishthira from his bed of arrows. Its principal sections discuss the duties of rulers, conduct during adversity and the path to liberation. What word completes the title of this parva?",
+        "This is also the name given to a class of mantras found in several Upanishads and traditionally recited at the conclusion of Hindu religious ceremonies.",
+        "When prefixed by Om, this word forms a familiar condolence message in India, commonly written or spoken after someone’s death."
       ]
     },
     {
@@ -89,6 +168,52 @@
       ]
     },
     {
+      "number": 13,
+      "format": "forbidden",
+      "answer": "Roads of Delhi",
+      "acceptedAnswers": [
+        "Delhi roads",
+        "Road names in Delhi",
+        "Road names of Delhi",
+        "Delhi road names",
+        "Streets of Delhi",
+        "Delhi streets",
+        "Delhi thoroughfares"
+      ],
+      "clues": [
+        "What is the common connection between the 24 questions?"
+      ]
+    },
+    {
+      "number": 14,
+      "format": "ladders",
+      "answer": "Nyaya",
+      "acceptedAnswers": [
+        "Nyāya",
+        "Nyay"
+      ],
+      "clues": [
+        "The foundational sutras of this school, attributed to Akshapada Gautama, recognise four valid means of knowledge: pratyaksha (perception), anumana (inference), upamana (comparison) and shabda (reliable testimony). They also distinguish three forms of debate: vada, a truth-seeking discussion; jalpa, an argument pursued for victory; and vitanda, in which one attacks an opponent’s position without defending one’s own. Which school of Hindu philosophy is this?",
+        "The Hindi terms for a court and the judiciary describe them, respectively, as the home of this concept and the institution entrusted with protecting and administering it.",
+        "On 1 July 2024, the Bharatiya ______ Sanhita replaced the Indian Penal Code as India’s principal legislation concerning criminal offences."
+      ]
+    },
+    {
+      "number": 15,
+      "format": "ladders",
+      "answer": "Neeti",
+      "acceptedAnswers": [
+        "Niti",
+        "Nīti",
+        "Neethi"
+      ],
+      "clues": [
+        "Traditionally attributed to the Sanskrit poet and philosopher Bhartrihari, the Shatakatraya comprises three collections of roughly one hundred verses each: the Shringara Shatakam on love, the Vairagya Shatakam on renunciation and a third collection devoted to ethical conduct and practical wisdom. What word completes the title of the third shatakam?",
+        "Medical entrance test followed by one produces a guiding principle.",
+        "In 2015, the Government of India used this word in the name of the policy think tank that replaced the Planning Commission."
+      ]
+    },
+    {
       "number": 16,
       "format": "ladders",
       "answer": "Kalibari",
@@ -115,6 +240,22 @@
       ]
     },
     {
+      "number": 18,
+      "format": "ladders",
+      "answer": "Syama Prasad Mookerjee",
+      "acceptedAnswers": [
+        "Shyama Prasad Mukherjee",
+        "Syama Prasad Mukherjee",
+        "Shyama Prasad Mookerjee",
+        "Shyamaprasad Mukhopadhyay"
+      ],
+      "clues": [
+        "In 1950, Nehru and Liaquat Ali Khan signed a pact committing India and Pakistan to protect their religious minorities amid communal violence and a growing refugee crisis. One member of Nehru’s cabinet argued that the agreement did not adequately safeguard Hindus in East Bengal and resigned as Minister for Industry and Supply. Who was he?",
+        "In 2001, during observances marking his birth centenary, CSIR instituted a selective doctoral fellowship in his name for some of the highest-ranking candidates in the CSIR–UGC JRF-NET examination. The tribute was particularly fitting because he had served as the first vice-president of CSIR after independence.",
+        "He campaigned for the complete integration of Jammu and Kashmir with the slogan, ‘Ek desh mein do vidhan, do pradhan aur do nishan nahin chalenge.’ After entering the state without a permit in 1953, he was arrested and died in detention. His supporters later proclaimed, ‘Jahan hue balidan ______, woh Kashmir hamara hai.’"
+      ]
+    },
+    {
       "number": 19,
       "format": "stringTheory",
       "answer": "Films with twelve in the title",
@@ -126,6 +267,21 @@
       ]
     },
     {
+      "number": 20,
+      "format": "ladders",
+      "answer": "Kautilya",
+      "acceptedAnswers": [
+        "Kauṭilya",
+        "Chanakya",
+        "Vishnugupta"
+      ],
+      "clues": [
+        "In 1905, the scholar R. Shamasastry recognised an ancient manuscript on statecraft among materials received by the Oriental Library in Mysore. He published its Sanskrit text in 1909 and an English translation in 1915, restoring a long-lost treatise to modern scholarship. Who is named as its author?",
+        "At the beginning of his treatise, he identifies four principal vidyas: anvikshiki, trayi, varta and dandaniti.",
+        "Traditionally identified with Vishnugupta, he is remembered as the strategist who helped Chandragupta Maurya overthrow the Nandas and establish the Mauryan Empire."
+      ]
+    },
+    {
       "number": 21,
       "format": "wordle",
       "answer": "TERESA",
@@ -133,6 +289,52 @@
         "CHRIST",
         "BENGAL",
         "MOTHER"
+      ]
+    },
+    {
+      "number": 22,
+      "format": "ladders",
+      "answer": "Leo Tolstoy",
+      "acceptedAnswers": [
+        "Lev Tolstoy",
+        "Count Leo Tolstoy",
+        "Lev Nikolayevich Tolstoy"
+      ],
+      "clues": [
+        "In 1908, the Indian revolutionary Tarak Nath Das asked this thinker how India might free itself from British rule. His response, A Letter to a Hindu, argued that imperial power endured through the cooperation of the ruled and urged resistance grounded in love rather than violence. Gandhi later arranged for the letter to be published in Indian Opinion and began corresponding with him. Who was he?",
+        "In a 1908 essay, Lenin described him as ‘the mirror of the Russian Revolution’, arguing that his writings reflected the anger and aspirations of Russia’s peasantry. Lenin nevertheless criticised his religious pacifism and rejection of revolutionary struggle.",
+        "He was a Russian count, moral philosopher and novelist whose best-known works include War and Peace and Anna Karenina."
+      ]
+    },
+    {
+      "number": 23,
+      "format": "ladders",
+      "answer": "Jayaprakash Narayan",
+      "acceptedAnswers": [
+        "Jai Prakash Narayan",
+        "Jaya Prakash Narayan",
+        "JP Narayan",
+        "Lok Nayak"
+      ],
+      "clues": [
+        "During the Quit India Movement, this socialist leader and five fellow prisoners escaped from Hazaribagh Central Jail on Diwali night in November 1942. He subsequently worked underground and helped organise the Azad Dasta to continue resistance against British rule. Who was he?",
+        "In 1974, he called for Sampoorna Kranti, or ‘Total Revolution’, at Patna’s Gandhi Maidan. Popularly known as Lok Nayak, he became the leading public face of the movement against Indira Gandhi’s government and was detained during the Emergency.",
+        "The movement he led became a training ground for a generation of politicians. Its participants included future Bihar chief ministers Lalu Prasad Yadav and Nitish Kumar, as well as prominent leaders such as Sushil Kumar Modi and Ravi Shankar Prasad."
+      ]
+    },
+    {
+      "number": 24,
+      "format": "ladders",
+      "answer": "Sri Aurobindo",
+      "acceptedAnswers": [
+        "Aurobindo Ghose",
+        "Aurobindo Ghosh",
+        "Sri Aurobindo Ghose"
+      ],
+      "clues": [
+        "In 1906, Barindra Kumar Ghose and his associates launched the Bengali publication Jugantar, which openly advocated armed insurrection against British rule and eventually lent its name to a revolutionary group. The venture had the approval of Barindra’s elder brother, an influential nationalist thinker. Who was he?",
+        "The revolutionary network with which he was associated included the Anushilan Samiti. Many of its local units operated outwardly as akhadas, where young men practised wrestling, lathi fighting and swordsmanship, while selected recruits received nationalist instruction and preparation for clandestine activity.",
+        "He withdrew from politics in 1910 and settled in French-controlled Pondicherry, where he developed Integral Yoga and established an ashram with the Mother. India attained independence on 15 August 1947, his seventy-fifth birthday, when he presented his celebrated ‘Five Dreams’."
       ]
     },
     {
