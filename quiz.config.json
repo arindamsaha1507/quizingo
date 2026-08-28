@@ -2,30 +2,44 @@
   "topics": {
     "corners": {
       "name": "Border",
+      "color": "#7c3aed",
+      "colorName": "Purple",
       "questionNumbers": [1, 5, 21, 25]
     },
     "top": {
       "name": "Renaming",
+      "color": "#0f766e",
+      "colorName": "Teal",
       "questionNumbers": [2, 3, 4, 8]
     },
     "left": {
       "name": "Structures",
+      "color": "#b45309",
+      "colorName": "Amber",
       "questionNumbers": [6, 11, 12, 16]
     },
     "right": {
       "name": "Scriptures",
+      "color": "#2563eb",
+      "colorName": "Blue",
       "questionNumbers": [10, 14, 15, 20]
     },
     "bottom": {
       "name": "Political Thinkers",
+      "color": "#be185d",
+      "colorName": "Magenta",
       "questionNumbers": [18, 22, 23, 24]
     },
     "diagonals": {
       "name": "Numbers",
+      "color": "#16803c",
+      "colorName": "Green",
       "questionNumbers": [7, 9, 17, 19]
     },
     "centre": {
       "name": "Connector",
+      "color": "#dc2626",
+      "colorName": "Red",
       "questionNumbers": [13]
     }
   },

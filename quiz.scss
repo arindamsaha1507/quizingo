@@ -1,0 +1,163 @@
+/*-- scss:defaults --*/
+$body-bg: #f6f2e8;
+$body-color: #172033;
+$link-color: #1f5d73;
+$presentation-heading-color: #172033;
+$presentation-font-size-root: 30px;
+$font-family-sans-serif: "Aptos", "Segoe UI", sans-serif;
+$presentation-heading-font: "Aptos Display", "Segoe UI", sans-serif;
+
+/*-- scss:rules --*/
+:root {
+  --player-one: #2563eb;
+  --player-one-dark: #1746a2;
+  --player-two: #ea580c;
+  --player-two-dark: #a83a05;
+  --black-hole: #111827;
+}
+.reveal .slides { text-align: left; }
+.reveal h1, .reveal h2 { letter-spacing: -.025em; }
+.reveal h2 { margin-bottom: .45em; }
+
+.quiz-board {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: .38rem;
+  width: min(100%, 1050px);
+  margin: 0 auto;
+}
+.reveal a.board-cell {
+  position: relative;
+  display: flex;
+  min-height: 106px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid var(--topic);
+  border-radius: 12px;
+  background: #fffdf8;
+  color: #172033;
+  text-decoration: none;
+  box-shadow: 0 3px 0 rgba(23, 32, 51, .14);
+  transition: transform .12s ease, opacity .12s ease;
+}
+.reveal a.board-cell:hover { transform: translateY(-3px); }
+.cell-number { font-size: 1.65rem; font-weight: 800; line-height: 1; }
+.cell-topic { margin-top: .25rem; font-size: .47rem; font-weight: 700; color: var(--topic); }
+.cell-format { margin-top: .1rem; font-size: .37rem; text-transform: uppercase; letter-spacing: .06em; }
+.board-cell.opened { opacity: .38; background: #dfe2e3; filter: grayscale(.7); }
+.board-cell.opened::after { content: "OPENED"; position: absolute; top: .15rem; right: .2rem; font-size: .28rem; font-weight: 800; }
+.board-cell.forbidden { background: #31151a !important; color: #fff !important; border-color: #dc2626 !important; }
+.board-cell.forbidden .cell-topic, .board-cell.forbidden .cell-format { color: #ffb5b5; }
+.reveal a.board-cell.owned { color: #fff !important; opacity: 1; filter: none; }
+.reveal a.board-cell.owner-player0 { border-color: var(--player-one-dark) !important; background: var(--player-one) !important; }
+.reveal a.board-cell.owner-player1 { border-color: var(--player-two-dark) !important; background: var(--player-two) !important; }
+.reveal a.board-cell.black-hole { border-color: #000 !important; background: var(--black-hole) !important; color: #fff !important; opacity: 1; filter: none; }
+.board-cell.owned .cell-topic, .board-cell.owned .cell-format,
+.board-cell.black-hole .cell-topic, .board-cell.black-hole .cell-format { color: rgba(255, 255, 255, .78); }
+.cell-owner { display: none; max-width: 92%; margin-top: .12rem; overflow: hidden; font-size: .38rem; font-weight: 800; text-overflow: ellipsis; white-space: nowrap; }
+.board-cell.owned .cell-owner, .board-cell.black-hole .cell-owner { display: block; }
+
+.topic-legend { display: flex; justify-content: center; flex-wrap: wrap; gap: .15rem .6rem; margin: .55rem auto .3rem; font-size: .38rem; }
+.topic-legend span { white-space: nowrap; }
+.topic-legend i { display: inline-block; width: .45rem; height: .45rem; margin-right: .15rem; border-radius: 50%; background: var(--topic); vertical-align: -.04rem; }
+.reset-button { display: block; margin: 0 auto; padding: .18rem .5rem; border: 1px solid #6b7280; border-radius: 7px; background: transparent; color: #374151; font: inherit; font-size: .4rem; cursor: pointer; }
+
+.score-strip { position: absolute; top: .08rem; right: 0; display: flex; gap: .25rem; z-index: 2; }
+.score-player { display: grid; grid-template-columns: .38rem minmax(1.8rem, auto) minmax(1rem, auto); align-items: center; justify-items: center; gap: .16rem; max-width: 5.5rem; min-height: .72rem; padding: .15rem .25rem; border: 2px solid currentColor; border-radius: 9px; background: rgba(255, 253, 248, .95); font-size: .48rem; font-weight: 700; }
+.score-player i { width: .32rem; height: .32rem; border-radius: 50%; background: currentColor; }
+.score-player span { width: 100%; overflow: hidden; line-height: 1; text-align: center; text-overflow: ellipsis; white-space: nowrap; }
+.score-player strong { display: grid; align-self: stretch; min-width: 1rem; padding-left: .16rem; place-items: center; border-left: 1px solid currentColor; line-height: 1; text-align: center; }
+.score-player.player-one { color: var(--player-one); }
+.score-player.player-two { color: var(--player-two); }
+
+.player-setup { display: grid; grid-template-columns: repeat(2, 1fr); gap: .7rem; max-width: 900px; margin: 1rem auto 0; }
+.player-setup label { display: grid; gap: .25rem; font-size: .75rem; font-weight: 800; }
+.player-one-text { color: var(--player-one); }
+.player-two-text { color: var(--player-two); }
+.player-setup input { box-sizing: border-box; width: 100%; padding: .42rem .5rem; border: 3px solid currentColor; border-radius: 10px; background: #fff; color: #172033; font: inherit; font-size: .8rem; }
+.player-setup label:first-child input { border-color: var(--player-one); }
+.player-setup label:nth-child(2) input { border-color: var(--player-two); }
+.setup-error { grid-column: 1 / -1; min-height: .6rem; margin: 0; color: #b42318; font-size: .52rem; text-align: center; }
+.start-game { grid-column: 1 / -1; justify-self: center; padding: .35rem .8rem; border: 0; border-radius: 8px; background: #172033; color: #fff; font: inherit; font-size: .65rem; font-weight: 800; cursor: pointer; }
+
+.question-meta { display: flex; align-items: center; gap: .35rem; margin-bottom: .45rem; }
+.topic-chip, .format-chip { display: inline-block; padding: .18rem .42rem; border-radius: 999px; font-size: .68rem; font-weight: 700; }
+.topic-chip { border: 2px solid var(--topic); color: var(--topic); }
+.format-chip { background: #e4e9ed; }
+.format-chip.wordle { background: #d7edd9; color: #236b32; }
+.format-chip.stringTheory { background: #dce8fa; color: #245da7; }
+.format-chip.ladders { background: #f7e5c9; color: #945308; }
+.format-chip.forbidden { background: #f9d7d7; color: #a31919; }
+.clue-list { display: grid; gap: .24rem; }
+.clue-card { padding: .22rem .4rem; border-left: 7px solid #d39b3a; border-radius: 7px; background: #fffdf8; box-shadow: 0 3px 12px rgba(23, 32, 51, .08); }
+.clue-card.stringTheory { border-left-color: #2563eb; }
+.clue-card.wordle { border-left-color: #16803c; }
+.clue-card.forbidden { border-left-color: #dc2626; }
+.clue-label { display: flex; justify-content: space-between; align-items: center; margin-bottom: .22rem; font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: #667085; }
+.clue-label strong { padding: .06rem .22rem; border-radius: 999px; background: #172033; color: #fff; letter-spacing: 0; }
+.clue-copy { font-size: 1.75rem; line-height: 1.18; }
+.clue-list.stringTheory { grid-template-columns: repeat(2, 1fr); gap: .5rem; }
+.clue-list.stringTheory .clue-card { min-height: 1.45rem; }
+.clue-list.stringTheory .clue-copy { font-size: 1.8rem; font-weight: 700; }
+.wordle-row { display: flex; justify-content: center; gap: .15rem; margin: .05rem auto; }
+.wordle-tile { display: grid; width: 2.1rem; height: 2.1rem; place-items: center; color: white; font-size: 1.35rem; font-weight: 800; text-transform: uppercase; }
+.wordle-tile.correct { background: #6aaa64; }
+.wordle-tile.present { background: #c9b458; }
+.wordle-tile.absent { background: #787c7e; }
+.wordle-guess-form { display: flex; align-items: center; justify-content: center; gap: .25rem; margin-top: .16rem; }
+.wordle-guess-input { box-sizing: border-box; width: 6rem; padding: .16rem .28rem; border: 2px solid #16803c; border-radius: 6px; background: #fff; color: #172033; font: inherit; font-size: .62rem; font-weight: 800; letter-spacing: .08em; text-align: center; text-transform: uppercase; }
+.wordle-guess-form > button { padding: .18rem .32rem; border: 0; border-radius: 6px; background: #236b32; color: #fff; font: inherit; font-size: .54rem; font-weight: 800; cursor: pointer; }
+.wordle-guess-form.submitted { width: 100%; }
+.wordle-guess-output { display: grid; width: 100%; justify-items: center; gap: .1rem; }
+.wordle-guess-output .wordle-row { margin: 0; }
+.wordle-guess-output strong { font-size: .5rem; line-height: 1.1; text-align: center; white-space: nowrap; }
+.guess-correct { color: #236b32; }
+.guess-incorrect { color: #9a3412; }
+.wordle-guess-form.locked:not(.submitted) { display: none; }
+.visually-hidden { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0, 0, 0, 0) !important; white-space: nowrap !important; border: 0 !important; }
+.quiz-nav { display: flex; align-items: center; gap: .35rem; margin-top: .45rem; }
+.advance-note { font-size: .55rem; color: #667085; }
+.reveal .quiz-button { display: inline-block; padding: .32rem .62rem; border: 0; border-radius: 7px; background: #1f5d73; color: #fff; font: inherit; font-size: .68rem; font-weight: 700; text-decoration: none; cursor: pointer; }
+.reveal a.quiz-button.secondary { background: #64748b; }
+.reveal .quiz-button.answer-button { margin-left: auto; background: #7a2934; }
+.answer-reveal { display: flex; flex-direction: column; gap: .3rem; padding: .8rem 1rem; border-radius: 12px; background: #172033; color: #fff; }
+.answer-reveal span { font-size: .45rem; text-transform: uppercase; letter-spacing: .1em; color: #a8c3cc; }
+.answer-reveal strong { font-size: 1.8rem; line-height: 1.2; }
+.accepted { margin-top: .65rem; font-size: .8rem; line-height: 1.5; }
+.muted { color: #6b7280; }
+
+.result-dialog { width: min(760px, calc(100vw - 40px)); padding: 0; border: 0; border-radius: 16px; background: #fffdf8; color: #172033; box-shadow: 0 24px 80px rgba(0, 0, 0, .35); font-family: "Aptos", "Segoe UI", sans-serif; }
+.result-dialog::backdrop { background: rgba(10, 18, 32, .68); }
+.result-dialog form { padding: 28px; }
+.result-dialog header { margin-bottom: 20px; }
+.result-dialog .dialog-kicker { margin: 0 0 3px; color: #64748b; font-size: 14px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.result-dialog h2 { margin: 0; color: #172033; font-size: 30px; }
+.result-dialog fieldset { margin: 0 0 18px; padding: 0; border: 0; }
+.result-dialog legend { margin-bottom: 9px; font-size: 16px; font-weight: 800; }
+.outcome-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.outcome-options legend { grid-column: 1 / -1; }
+.outcome-options label, .point-presets label, .custom-points { display: flex; align-items: center; gap: 8px; padding: 12px; border: 2px solid #d7dce2; border-radius: 9px; font-size: 17px; font-weight: 700; cursor: pointer; }
+.outcome-options label:has(input:checked), .point-presets label:has(input:checked), .custom-points:has(input[type="radio"]:checked) { border-color: #172033; background: #edf1f4; }
+.outcome-options i { width: 13px; height: 13px; flex: 0 0 auto; border-radius: 50%; }
+.outcome-player-one i { background: var(--player-one); }
+.outcome-player-two i { background: var(--player-two); }
+.outcome-black-hole i { background: var(--black-hole); }
+.point-presets { display: flex; flex-wrap: wrap; gap: 9px; }
+.point-presets label { min-width: 55px; justify-content: center; }
+.point-presets input, .custom-points > input[type="radio"] { position: absolute; opacity: 0; pointer-events: none; }
+.custom-points { width: max-content; margin-top: 10px; }
+.custom-points input[type="number"] { width: 90px; padding: 5px 8px; border: 1px solid #9aa4b2; border-radius: 5px; font: inherit; }
+.points-fieldset.disabled { opacity: .4; }
+.result-error { min-height: 20px; margin: 0 0 10px; color: #b42318; font-size: 14px; font-weight: 700; }
+.result-dialog footer { display: flex; justify-content: flex-end; gap: 10px; }
+.dialog-button { padding: 10px 16px; border: 0; border-radius: 7px; font: inherit; font-size: 16px; font-weight: 800; cursor: pointer; }
+.dialog-button.secondary { background: #e4e9ed; color: #172033; }
+.dialog-button.primary { background: #1f5d73; color: #fff; }
+.bingo-toast { position: fixed; top: 24px; left: 50%; z-index: 10000; max-width: min(720px, calc(100vw - 40px)); padding: 14px 22px; border-radius: 999px; background: #172033; color: #fff; box-shadow: 0 12px 35px rgba(0, 0, 0, .28); font-family: "Aptos", "Segoe UI", sans-serif; font-size: 18px; font-weight: 800; opacity: 0; pointer-events: none; transform: translate(-50%, -18px); transition: opacity .2s ease, transform .2s ease; }
+.bingo-toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+@media (max-width: 800px) {
+  .reveal a.board-cell { min-height: 85px; }
+  .cell-topic { display: none; }
+}

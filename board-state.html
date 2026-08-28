@@ -1,0 +1,495 @@
+<dialog id="result-dialog" class="result-dialog" aria-labelledby="result-dialog-title">
+  <form id="result-form" method="dialog">
+    <header><p class="dialog-kicker">Complete question</p><h2 id="result-dialog-title">Record result</h2></header>
+    <fieldset class="outcome-options">
+      <legend>Who won?</legend>
+      <label class="outcome-player-one"><input type="radio" name="outcome" value="player0" required><i></i><span data-dialog-player="0">Player 1</span></label>
+      <label class="outcome-player-two"><input type="radio" name="outcome" value="player1"><i></i><span data-dialog-player="1">Player 2</span></label>
+      <label class="outcome-black-hole"><input type="radio" name="outcome" value="blackHole"><i></i><span>Black Hole</span></label>
+    </fieldset>
+    <fieldset id="points-fieldset" class="points-fieldset">
+      <legend>Points awarded</legend>
+      <div id="point-presets" class="point-presets"></div>
+      <label class="custom-points"><input id="custom-points-choice" type="radio" name="pointsChoice" value="custom"><span>Custom</span><input id="custom-points-value" type="number" min="0" step="1" inputmode="numeric" aria-label="Custom points" disabled></label>
+    </fieldset>
+    <p id="result-error" class="result-error" role="alert" aria-live="polite"></p>
+    <footer><button id="cancel-result" class="dialog-button secondary" type="button">Cancel</button><button id="save-result" class="dialog-button primary" type="submit">Save and return to board</button></footer>
+  </form>
+</dialog>
+<div id="bingo-toast" class="bingo-toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+  const storageKey = "quizingo-game-v4";
+  const previousStorageKeys = ["quizingo-game-v3", "quizingo-game-v2"];
+  const legacyStorageKey = "quizingo-opened-v1";
+  const questionCount = 25;
+  let editingQuestion = null;
+  let returnToBoardAfterSave = true;
+
+  const emptyState = () => ({ version: 4, players: ["", ""], opened: [], stages: {}, results: {}, awardedBingos: [[], []], blockedBingos: [], wordleGuesses: {} });
+  const validQuestion = (value) => Number.isInteger(Number(value)) && Number(value) >= 1 && Number(value) <= questionCount;
+
+  function normalizeState(raw) {
+    const state = emptyState();
+    if (!raw || typeof raw !== "object") return state;
+    if (Array.isArray(raw.players)) state.players = [0, 1].map((index) => typeof raw.players[index] === "string" ? raw.players[index].trim() : "");
+    if (Array.isArray(raw.opened)) state.opened = [...new Set(raw.opened.map(Number).filter(validQuestion))];
+    if (raw.stages && typeof raw.stages === "object") {
+      for (const [question, stage] of Object.entries(raw.stages)) {
+        if (validQuestion(question) && Number.isInteger(Number(stage)) && Number(stage) >= 1) state.stages[question] = Number(stage);
+      }
+    }
+    if (raw.results && typeof raw.results === "object") {
+      for (const [question, result] of Object.entries(raw.results)) {
+        if (!validQuestion(question) || !result || !["player0", "player1", "blackHole"].includes(result.owner)) continue;
+        const points = result.owner === "blackHole" ? 0 : Number(result.points);
+        if (!Number.isInteger(points) || points < 0) continue;
+        state.results[question] = { owner: result.owner, points };
+        if (!state.opened.includes(Number(question))) state.opened.push(Number(question));
+      }
+    }
+    if (Array.isArray(raw.awardedBingos)) {
+      state.awardedBingos = [0, 1].map((index) => Array.isArray(raw.awardedBingos[index])
+        ? [...new Set(raw.awardedBingos[index].filter((id) => typeof id === "string"))]
+        : []);
+    }
+    if (Array.isArray(raw.blockedBingos)) state.blockedBingos = [...new Set(raw.blockedBingos.filter((id) => typeof id === "string"))];
+    if (raw.wordleGuesses && typeof raw.wordleGuesses === "object") {
+      for (const [question, stages] of Object.entries(raw.wordleGuesses)) {
+        if (!validQuestion(question) || !stages || typeof stages !== "object") continue;
+        for (const [stage, attempt] of Object.entries(stages)) {
+          if (!Number.isInteger(Number(stage)) || Number(stage) < 1 || !attempt || typeof attempt.guess !== "string" || !Array.isArray(attempt.states)) continue;
+          state.wordleGuesses[question] ||= {};
+          state.wordleGuesses[question][stage] = {
+            guess: attempt.guess.toLocaleUpperCase(),
+            states: attempt.states.filter((value) => ["correct", "present", "absent"].includes(value)),
+            correct: Boolean(attempt.correct),
+          };
+        }
+      }
+    }
+    return state;
+  }
+
+  function loadState() {
+    try {
+      const saved = sessionStorage.getItem(storageKey);
+      if (saved) return normalizeState(JSON.parse(saved));
+      for (const previousStorageKey of previousStorageKeys) {
+        const previous = sessionStorage.getItem(previousStorageKey);
+        if (previous) return normalizeState(JSON.parse(previous));
+      }
+      const legacy = JSON.parse(sessionStorage.getItem(legacyStorageKey) || "[]");
+      const migrated = emptyState();
+      if (Array.isArray(legacy)) migrated.opened = [...new Set(legacy.map(Number).filter(validQuestion))];
+      return migrated;
+    } catch { return emptyState(); }
+  }
+
+  let game = loadState();
+
+  function saveState() {
+    try { sessionStorage.setItem(storageKey, JSON.stringify(game)); }
+    catch { /* Keep the deck usable when storage is unavailable. */ }
+  }
+
+  function setupComplete() {
+    return game.players.every(Boolean) && game.players[0].toLocaleLowerCase() !== game.players[1].toLocaleLowerCase();
+  }
+
+  function scores() {
+    const totals = [0, 0];
+    for (const result of Object.values(game.results)) {
+      if (result.owner === "player0") totals[0] += result.points;
+      if (result.owner === "player1") totals[1] += result.points;
+    }
+    const reward = runtimeConfig().bingoReward;
+    const validPatterns = new Set(bingoPatterns().map((pattern) => pattern.id));
+    totals[0] += game.awardedBingos[0].filter((id) => validPatterns.has(id)).length * reward;
+    totals[1] += game.awardedBingos[1].filter((id) => validPatterns.has(id)).length * reward;
+    return totals;
+  }
+
+  function runtimeConfig() {
+    try { return JSON.parse(document.getElementById("quiz-game-config")?.textContent || "{}"); }
+    catch { return {}; }
+  }
+
+  function bingoPatterns() {
+    const patterns = [];
+    for (let row = 0; row < 5; row += 1) patterns.push({ id: `row-${row + 1}`, cells: Array.from({ length: 5 }, (_, column) => row * 5 + column + 1) });
+    for (let column = 0; column < 5; column += 1) patterns.push({ id: `column-${column + 1}`, cells: Array.from({ length: 5 }, (_, row) => row * 5 + column + 1) });
+    patterns.push({ id: "diagonal-1", cells: [1, 7, 13, 19, 25] });
+    patterns.push({ id: "diagonal-2", cells: [5, 9, 13, 17, 21] });
+    for (const [id, cells] of Object.entries(runtimeConfig().directionalRegions || {})) patterns.push({ id: `region-${id}`, cells });
+    return patterns;
+  }
+
+  function awardNewBingos() {
+    const awards = [];
+    [0, 1].forEach((playerIndex) => {
+      const owner = `player${playerIndex}`;
+      for (const pattern of bingoPatterns()) {
+        if (game.blockedBingos.includes(pattern.id)) continue;
+        if (game.awardedBingos[playerIndex].includes(pattern.id)) continue;
+        if (pattern.cells.every((question) => game.results[question]?.owner === owner)) {
+          game.awardedBingos[playerIndex].push(pattern.id);
+          awards.push({ playerIndex, patternId: pattern.id });
+        }
+      }
+    });
+    return awards;
+  }
+
+  function blockBlackHolePatterns() {
+    for (const [question, result] of Object.entries(game.results)) {
+      if (result.owner !== "blackHole") continue;
+      for (const pattern of bingoPatterns()) {
+        if (pattern.cells.includes(Number(question)) && !game.blockedBingos.includes(pattern.id)) game.blockedBingos.push(pattern.id);
+      }
+    }
+  }
+
+  function showBingoToast(awards) {
+    if (!awards.length) return;
+    const toast = document.getElementById("bingo-toast");
+    const byPlayer = [0, 1].map((playerIndex) => awards.filter((award) => award.playerIndex === playerIndex).length);
+    toast.textContent = byPlayer.map((count, playerIndex) => count
+      ? `${game.players[playerIndex]}: ${count} Bingo${count === 1 ? "" : "s"} (+${count * runtimeConfig().bingoReward})`
+      : "").filter(Boolean).join(" · ");
+    toast.classList.add("show");
+    window.clearTimeout(showBingoToast.timeout);
+    showBingoToast.timeout = window.setTimeout(() => toast.classList.remove("show"), 4500);
+  }
+
+  function wordleStates(guess, answer) {
+    const guessed = [...guess.toLocaleUpperCase()];
+    const target = [...answer.toLocaleUpperCase()];
+    const states = Array(guessed.length).fill("absent");
+    const remaining = new Map();
+    guessed.forEach((letter, index) => {
+      if (letter === target[index]) states[index] = "correct";
+      else remaining.set(target[index], (remaining.get(target[index]) || 0) + 1);
+    });
+    guessed.forEach((letter, index) => {
+      if (states[index] === "correct") return;
+      if ((remaining.get(letter) || 0) > 0) {
+        states[index] = "present";
+        remaining.set(letter, remaining.get(letter) - 1);
+      }
+    });
+    return states;
+  }
+
+  function renderWordleAttempt(form, attempt) {
+    const output = form.querySelector(".wordle-guess-output");
+    output.replaceChildren();
+    const row = document.createElement("div");
+    row.className = "wordle-row submitted-guess";
+    row.setAttribute("role", "img");
+    row.setAttribute("aria-label", `${attempt.guess}: ${attempt.correct ? "correct" : "incorrect"}`);
+    [...attempt.guess].forEach((letter, index) => {
+      const tile = document.createElement("span");
+      tile.className = `wordle-tile ${attempt.states[index]}`;
+      tile.textContent = letter;
+      row.append(tile);
+    });
+    const message = document.createElement("strong");
+    message.className = attempt.correct ? "guess-correct" : "guess-incorrect";
+    message.textContent = attempt.correct ? "Correct!" : "Incorrect — reveal the next clue.";
+    output.append(row, message);
+    form.querySelector(".wordle-guess-input").hidden = true;
+    form.querySelector("button").hidden = true;
+    form.classList.add("submitted");
+  }
+
+  function restoreWordleGuesses(slide = document) {
+    slide.querySelectorAll?.(".wordle-guess-form").forEach((form) => {
+      const attempt = game.wordleGuesses[form.dataset.question]?.[form.dataset.stage];
+      if (attempt) renderWordleAttempt(form, attempt);
+    });
+    slide.querySelectorAll?.(".clue-list.wordle[data-question]").forEach((clueList) => {
+      const attempts = Object.values(game.wordleGuesses[clueList.dataset.question] || {});
+      if (!attempts.some((attempt) => attempt.correct)) return;
+      clueList.querySelectorAll(".wordle-guess-form").forEach((form) => {
+        if (form.classList.contains("submitted")) return;
+        form.classList.add("locked");
+        form.querySelector(".wordle-guess-input").disabled = true;
+        form.querySelector("button").disabled = true;
+      });
+      if (clueList.closest("section")?.classList.contains("present")) {
+        const fragmentCount = clueList.querySelectorAll(".clue-card.fragment").length;
+        if (fragmentCount && window.Reveal) Reveal.navigateFragment(fragmentCount - 1);
+      }
+    });
+  }
+
+  function resetWordleForms() {
+    document.querySelectorAll(".wordle-guess-form").forEach((form) => {
+      form.reset();
+      form.classList.remove("submitted", "locked");
+      const input = form.querySelector(".wordle-guess-input");
+      const button = form.querySelector("button");
+      input.hidden = false;
+      input.disabled = false;
+      input.setCustomValidity("");
+      button.hidden = false;
+      button.disabled = false;
+      form.querySelector(".wordle-guess-output").replaceChildren();
+    });
+  }
+
+  function revealRemainingWordleClues(form) {
+    const clueList = form.closest(".clue-list.wordle");
+    if (!clueList || !window.Reveal) return;
+    const fragmentCount = clueList.querySelectorAll(".clue-card.fragment").length;
+    if (fragmentCount) Reveal.navigateFragment(fragmentCount - 1);
+    game.stages[form.dataset.question] = clueList.querySelectorAll(".clue-card").length;
+  }
+
+  function paint() {
+    const totals = scores();
+    document.querySelectorAll("[data-scoreboard]").forEach((scoreboard) => {
+      [0, 1].forEach((index) => {
+        scoreboard.querySelector(`[data-player-name="${index}"]`).textContent = game.players[index] || `Player ${index + 1}`;
+        scoreboard.querySelector(`[data-player-score="${index}"]`).textContent = totals[index];
+      });
+    });
+    document.querySelectorAll("[data-dialog-player]").forEach((label) => {
+      const index = Number(label.dataset.dialogPlayer);
+      label.textContent = game.players[index] || `Player ${index + 1}`;
+    });
+    document.querySelectorAll(".board-cell[data-question]").forEach((cell) => {
+      const question = cell.dataset.question;
+      const result = game.results[question];
+      const isOpened = game.opened.includes(Number(question));
+      cell.classList.remove("opened", "owned", "owner-player0", "owner-player1", "black-hole");
+      const ownerLabel = cell.querySelector(".cell-owner");
+      ownerLabel.textContent = "";
+      let stateLabel = "unopened";
+      if (result?.owner === "blackHole") {
+        cell.classList.add("black-hole");
+        ownerLabel.textContent = "Black Hole";
+        stateLabel = "Black Hole";
+      } else if (result) {
+        const index = result.owner === "player0" ? 0 : 1;
+        cell.classList.add("owned", `owner-player${index}`);
+        ownerLabel.textContent = `${game.players[index]} · ${result.points}`;
+        stateLabel = `owned by ${game.players[index]} for ${result.points} points`;
+      } else if (isOpened) {
+        cell.classList.add("opened");
+        stateLabel = "opened, result not recorded";
+      }
+      cell.setAttribute("aria-label", `Question ${question}: ${cell.dataset.colorName}, ${cell.dataset.formatLabel}, ${stateLabel}`);
+    });
+  }
+
+  const boardCell = (question) => document.querySelector(`.board-cell[data-question="${question}"]`);
+
+  function updateStageFromSlide(slide) {
+    const clueList = slide?.querySelector?.(".clue-list[data-question]");
+    if (!clueList) return;
+    const visibleFragments = clueList.querySelectorAll(".clue-card.fragment.visible").length;
+    game.stages[clueList.dataset.question] = Math.min(1 + visibleFragments, clueList.querySelectorAll(".clue-card").length);
+    saveState();
+  }
+
+  const pointValues = (cell) => cell.dataset.pointOptions.split(",").map(Number).filter((value) => Number.isInteger(value) && value >= 0);
+
+  function defaultPoints(cell) {
+    const rewards = cell.dataset.stagePoints.split(",").map(Number);
+    const stage = Math.max(1, game.stages[cell.dataset.question] || 1);
+    return rewards[Math.min(stage - 1, rewards.length - 1)];
+  }
+
+  function renderPointChoices(cell, selectedPoints) {
+    const container = document.getElementById("point-presets");
+    container.replaceChildren();
+    for (const points of pointValues(cell)) {
+      const label = document.createElement("label");
+      const input = document.createElement("input");
+      const text = document.createElement("span");
+      input.type = "radio";
+      input.name = "pointsChoice";
+      input.value = String(points);
+      input.checked = points === selectedPoints;
+      text.textContent = String(points);
+      label.append(input, text);
+      container.append(label);
+    }
+  }
+
+  function setPointsDisabled(disabled) {
+    const fieldset = document.getElementById("points-fieldset");
+    fieldset.disabled = disabled;
+    fieldset.classList.toggle("disabled", disabled);
+  }
+
+  function openResultDialog(question, edit = false) {
+    const cell = boardCell(question);
+    const dialog = document.getElementById("result-dialog");
+    if (!cell || !dialog || !setupComplete()) return;
+    editingQuestion = String(question);
+    returnToBoardAfterSave = !edit;
+    const existing = game.results[editingQuestion];
+    const selectedPoints = existing?.points ?? defaultPoints(cell);
+    document.getElementById("result-dialog-title").textContent = `${edit ? "Edit" : "Record"} Question ${question}`;
+    document.getElementById("save-result").textContent = edit ? "Save changes" : "Save and return to board";
+    document.getElementById("result-error").textContent = "";
+    renderPointChoices(cell, selectedPoints);
+    const customChoice = document.getElementById("custom-points-choice");
+    const customValue = document.getElementById("custom-points-value");
+    const isPreset = pointValues(cell).includes(selectedPoints);
+    customChoice.checked = !isPreset && existing?.owner !== "blackHole";
+    customValue.value = !isPreset ? selectedPoints : "";
+    customValue.disabled = !customChoice.checked;
+    const owner = existing?.owner;
+    dialog.querySelectorAll('input[name="outcome"]').forEach((input) => { input.checked = input.value === owner; });
+    setPointsDisabled(owner === "blackHole");
+    dialog.showModal();
+  }
+
+  function closeResultDialog() {
+    document.getElementById("result-dialog")?.close();
+    editingQuestion = null;
+  }
+
+  function routeToSetupIfNeeded(slide) {
+    if (setupComplete()) return;
+    const id = slide?.id || "";
+    if (id === "board" || /^q\d+-(clues|answer)$/.test(id)) window.location.hash = "#/setup";
+  }
+
+  document.addEventListener("submit", (event) => {
+    if (event.target.matches(".wordle-guess-form")) {
+      event.preventDefault();
+      const form = event.target;
+      const question = form.dataset.question;
+      const stage = form.dataset.stage;
+      if (game.wordleGuesses[question]?.[stage]) return;
+      const input = form.querySelector(".wordle-guess-input");
+      const guess = input.value.trim().toLocaleUpperCase();
+      const expectedLength = Number(form.dataset.length);
+      if (!/^[A-Z]+$/.test(guess) || [...guess].length !== expectedLength) {
+        input.setCustomValidity(`Enter exactly ${expectedLength} letters.`);
+        input.reportValidity();
+        return;
+      }
+      input.setCustomValidity("");
+      const answer = form.dataset.answer.toLocaleUpperCase();
+      const attempt = { guess, states: wordleStates(guess, answer), correct: guess === answer };
+      game.wordleGuesses[question] ||= {};
+      game.wordleGuesses[question][stage] = attempt;
+      if (attempt.correct) revealRemainingWordleClues(form);
+      saveState();
+      renderWordleAttempt(form, attempt);
+      if (attempt.correct) restoreWordleGuesses(form.closest("section"));
+      return;
+    }
+
+    if (event.target.id === "player-setup") {
+      event.preventDefault();
+      const names = [document.getElementById("player-one-name").value.trim(), document.getElementById("player-two-name").value.trim()];
+      const error = document.getElementById("setup-error");
+      if (names.some((name) => !name)) { error.textContent = "Enter both player names."; return; }
+      if (names[0].toLocaleLowerCase() === names[1].toLocaleLowerCase()) { error.textContent = "Player names must be different."; return; }
+      game.players = names;
+      error.textContent = "";
+      saveState();
+      paint();
+      window.location.hash = "#/board";
+      return;
+    }
+
+    if (event.target.id === "result-form") {
+      event.preventDefault();
+      const formData = new FormData(event.target);
+      const outcome = formData.get("outcome");
+      const error = document.getElementById("result-error");
+      if (!["player0", "player1", "blackHole"].includes(outcome)) { error.textContent = "Choose a winner or Black Hole."; return; }
+      let points = 0;
+      if (outcome !== "blackHole") {
+        const choice = formData.get("pointsChoice");
+        if (!choice) { error.textContent = "Choose a point value."; return; }
+        points = choice === "custom" ? Number(document.getElementById("custom-points-value").value) : Number(choice);
+        if (!Number.isInteger(points) || points < 0) { error.textContent = "Custom points must be a non-negative whole number."; return; }
+      }
+      game.results[editingQuestion] = { owner: String(outcome), points };
+      if (!game.opened.includes(Number(editingQuestion))) game.opened.push(Number(editingQuestion));
+      blockBlackHolePatterns();
+      const newBingos = awardNewBingos();
+      saveState();
+      paint();
+      const shouldReturn = returnToBoardAfterSave;
+      closeResultDialog();
+      if (shouldReturn) window.location.hash = "#/board";
+      showBingoToast(newBingos);
+    }
+  });
+
+  document.addEventListener("change", (event) => {
+    if (event.target.name === "outcome") setPointsDisabled(event.target.value === "blackHole");
+    if (event.target.name === "pointsChoice") {
+      const custom = event.target.value === "custom";
+      const customInput = document.getElementById("custom-points-value");
+      customInput.disabled = !custom;
+      if (custom) customInput.focus();
+    }
+  });
+
+  document.addEventListener("input", (event) => {
+    if (event.target.classList.contains("wordle-guess-input")) event.target.setCustomValidity("");
+  });
+
+  document.addEventListener("click", (event) => {
+    const cell = event.target.closest?.(".board-cell[data-question]");
+    if (cell) {
+      const question = Number(cell.dataset.question);
+      if (game.results[cell.dataset.question]) {
+        event.preventDefault();
+        openResultDialog(question, true);
+        return;
+      }
+      if (!game.opened.includes(question)) game.opened.push(question);
+      game.stages[cell.dataset.question] = Math.max(1, game.stages[cell.dataset.question] || 1);
+      saveState();
+      paint();
+    }
+    const recordButton = event.target.closest?.("[data-record-question]");
+    if (recordButton) openResultDialog(recordButton.dataset.recordQuestion, false);
+    if (event.target.closest?.("#cancel-result")) closeResultDialog();
+    if (event.target.closest?.("#reset-game")) {
+      if (!window.confirm("Reset the entire game, including player names, scores, and cell ownership?")) return;
+      game = emptyState();
+      try { sessionStorage.removeItem(storageKey); previousStorageKeys.forEach((key) => sessionStorage.removeItem(key)); sessionStorage.removeItem(legacyStorageKey); }
+      catch { /* The in-memory reset still applies. */ }
+      document.getElementById("player-setup")?.reset();
+      resetWordleForms();
+      paint();
+      window.location.hash = "#/setup";
+    }
+  });
+
+  function initialize() {
+    document.getElementById("player-one-name").value = game.players[0];
+    document.getElementById("player-two-name").value = game.players[1];
+    const blockedBefore = game.blockedBingos.length;
+    blockBlackHolePatterns();
+    const migratedBingos = awardNewBingos();
+    if (migratedBingos.length || game.blockedBingos.length !== blockedBefore) saveState();
+    paint();
+    restoreWordleGuesses();
+    routeToSetupIfNeeded(document.querySelector(".reveal .slides section.present"));
+  }
+
+  document.addEventListener("DOMContentLoaded", initialize);
+  window.addEventListener("pageshow", initialize);
+  if (window.Reveal) {
+    Reveal.on("ready", (event) => routeToSetupIfNeeded(event.currentSlide));
+    Reveal.on("slidechanged", (event) => { updateStageFromSlide(event.previousSlide); updateStageFromSlide(event.currentSlide); routeToSetupIfNeeded(event.currentSlide); restoreWordleGuesses(event.currentSlide); paint(); });
+    Reveal.on("fragmentshown", (event) => updateStageFromSlide(event.fragment.closest("section")));
+    Reveal.on("fragmenthidden", (event) => updateStageFromSlide(event.fragment.closest("section")));
+  }
+})();
+</script>

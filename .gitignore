@@ -1,0 +1,5 @@
+/.quarto/
+/_site/
+/quiz.generated.md
+
+**/*.quarto_ipynb
