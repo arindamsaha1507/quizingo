@@ -1,5 +1,5 @@
 ---
-title: "Quizingo"
+title: "Forbidden Quizzingo"
 subtitle: "A 5 × 5 quiz board"
 format: revealjs
 ---

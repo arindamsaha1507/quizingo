@@ -1,6 +1,6 @@
-# Quizingo Game Guide
+# Forbidden Quizzingo Game Guide
 
-Quizingo is a two-team quiz played on a 5-by-5 grid. The board contains 25 questions arranged into topical regions and four question formats. Teams compete for question points, claim cells by answering correctly, and earn bonuses by completing Bingo patterns.
+Forbidden Quizzingo is a two-team quiz played on a 5-by-5 grid. The board contains 25 questions arranged into topical regions and four question formats. Teams compete for question points, claim cells by answering correctly, and earn bonuses by completing Bingo patterns.
 
 This guide explains the current game rules for players and quizmasters. The values in [`quiz.config.json`](quiz.config.json) are the source of truth for topic assignments and scoring. Running `node scripts/render-guide.mjs` synchronizes the config-driven parts of this document.
 

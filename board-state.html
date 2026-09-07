@@ -283,6 +283,30 @@
       }
       cell.setAttribute("aria-label", `Question ${question}: ${cell.dataset.colorName}, ${cell.dataset.formatLabel}, ${stateLabel}`);
     });
+    document.querySelectorAll("[data-winner-slide]").forEach((slide) => {
+      const completedQuestions = Object.keys(game.results).length;
+      const title = slide.querySelector("[data-winner-title]");
+      const message = slide.querySelector("[data-winner-message]");
+      slide.classList.remove("winner-player0", "winner-player1", "winner-tie", "winner-incomplete");
+      [0, 1].forEach((index) => {
+        slide.querySelector(`[data-winner-player="${index}"]`).textContent = game.players[index] || `Player ${index + 1}`;
+        slide.querySelector(`[data-winner-score="${index}"]`).textContent = totals[index];
+      });
+      if (!setupComplete() || completedQuestions < questionCount) {
+        slide.classList.add("winner-incomplete");
+        title.textContent = "Complete all 25 questions to crown a winner";
+        message.textContent = `${completedQuestions} of ${questionCount} results recorded`;
+      } else if (totals[0] === totals[1]) {
+        slide.classList.add("winner-tie");
+        title.textContent = "It’s a tie!";
+        message.textContent = `${game.players[0]} and ${game.players[1]} finish level on ${totals[0]} points.`;
+      } else {
+        const winnerIndex = totals[0] > totals[1] ? 0 : 1;
+        slide.classList.add(`winner-player${winnerIndex}`);
+        title.textContent = game.players[winnerIndex];
+        message.textContent = `wins Forbidden Quizzingo with ${totals[winnerIndex]} points!`;
+      }
+    });
   }
 
   const boardCell = (question) => document.querySelector(`.board-cell[data-question="${question}"]`);

@@ -8,7 +8,16 @@
         "ODISHA",
         "EDICTS",
         "EMBLEM"
-      ]
+      ],
+      "trivia": "Most of Ashoka’s major edicts identify him as Devanampiya Piyadasi, not Ashoka. The Maski inscription helped confirm that these titles referred to him.",
+      "image": {
+        "path": "images/answers/q01-ashoka.jpg",
+        "alt": "The Lion Capital of Ashoka displayed at Sarnath",
+        "caption": "The Lion Capital of Ashoka at Sarnath",
+        "credit": "Lisa (lisa bat) / Wikimedia Commons",
+        "source": "https://commons.wikimedia.org/wiki/File:Lion_capital_of_Ashoka,_Sarnath.jpg",
+        "license": "CC BY 2.0"
+      }
     },
     {
       "number": 2,
@@ -21,26 +30,41 @@
         "James Broun-Ramsay"
       ],
       "clues": [
-        "In 1848, this Governor-General of India began a tenure marked by the aggressive application of the Doctrine of Lapse. Under this policy, the East India Company could refuse to recognise an adopted successor and annex a dependent princely state whose ruler died without a natural male heir. Satara, Jhansi and Nagpur were annexed in this manner, while Awadh was taken separately on the stated grounds of misgovernment. Who was he?",
-        "During his tenure, Sir Charles Wood sent the landmark Education Despatch of 1854 to the Government of India. It recommended provincial education departments, grants-in-aid, teacher training and universities in Calcutta, Bombay and Madras.",
-        "A Himachal Pradesh hill station established as a British retreat in 1854 was named after his title. Subhas Chandra Bose spent several months there in 1937, and proposals have since been made to rename it after him."
-      ]
+        "Beginning his tenure as Governor-General in 1848, he used the Doctrine of Lapse to annex Satara, Jhansi and Nagpur. Who was he?",
+        "His tenure ended in 1856, a year before the Rebellion of 1857. Resentment over the Doctrine of Lapse contributed to the revolt.",
+        "A Himachal Pradesh hill station established as a British retreat in 1854 was named after his title. However, there have been proposals to rename it after Netaji Subhas Chandra Bose."
+      ],
+      "trivia": "Under the Doctrine of Lapse, the East India Company could annex a princely state whose ruler died without a natural male heir, refusing to recognise an adopted successor. Ironically, Dalhousie had no sons; when he died, his marquessate became extinct, though his earldom passed to a cousin.",
+      "image": {
+        "path": "images/answers/q02-dalhousie.jpg",
+        "alt": "A portrait of Lord Dalhousie",
+        "caption": "Lord Dalhousie, circa 1849",
+        "credit": "George Richmond / Wikimedia Commons",
+        "source": "https://commons.wikimedia.org/wiki/File:Dalhousie.jpg",
+        "license": "Public domain"
+      }
     },
     {
       "number": 3,
       "format": "ladders",
       "answer": "Aurangzeb",
       "acceptedAnswers": [
-        "Aurangzeb Alamgir",
-        "Alamgir I",
-        "Muhi al-Din Muhammad",
-        "Muhi-ud-Din Muhammad"
+        "Aurangzeb Alamgir"
       ],
       "clues": [
-        "Born Muhi al-Din Muhammad, this Mughal prince assumed the regnal title Alamgir upon ascending the throne in 1658. Which emperor is he better known as?",
-        "In 1681, he moved into the Deccan and spent the final twenty-six years of his life there, directing campaigns against the Marathas and annexing the sultanates of Bijapur and Golconda.",
-        "The Maharashtra city that bore his name was officially renamed Chhatrapati Sambhajinagar in 2023. Nearby, at Khuldabad, he lies buried in a remarkably simple open-air grave."
-      ]
+        "Born Muhi al-Din Muhammad, this Mughal prince assumed the regnal title Alamgir upon ascending the throne in 1658. By what name is he better known?",
+        "In 1681, he moved to the Deccan, spending his final twenty-six years campaigning against the Marathas and annexing Bijapur and Golconda.",
+        "The Maharashtra city bearing his name became Chhatrapati Sambhajinagar in 2023. He lies nearby at Khuldabad, in a simple open-air grave."
+      ],
+      "trivia": "Aurangzeb commissioned the Fatawa-i Alamgiri as a comprehensive Hanafi legal manual for Mughal governors and judges. Later used by British colonial courts, it remains an authoritative reference beyond India under the name Fatawa Hindiyya.",
+      "image": {
+        "path": "images/answers/q03-aurangzeb.jpg",
+        "alt": "A Mughal portrait of Emperor Aurangzeb",
+        "caption": "Emperor Aurangzeb in a Mughal portrait",
+        "credit": "Unknown Mughal artist / Wikimedia Commons",
+        "source": "https://commons.wikimedia.org/wiki/File:Aurangzeb_(r._1658-1707).jpg",
+        "license": "Public domain"
+      }
     },
     {
       "number": 4,
@@ -53,10 +77,19 @@
         "Dara Sikoh"
       ],
       "clues": [
-        "This Mughal prince explored common ground between Sufi and Vedantic thought in Majma-ul-Bahrain, meaning ‘The Confluence of the Two Oceans’. He also produced Sirr-i-Akbar, a Persian rendering of more than fifty Upanishads. Who was he?",
-        "The eldest son and chosen successor of Shah Jahan, he lost the ensuing war of succession, was tried for heresy and executed in Delhi in 1659. He was subsequently buried in Humayun’s Tomb.",
-        "Historian Supriya Gandhi titled her biography of this prince The Emperor Who Never Was, alluding to the Mughal throne for which he had been prepared but never occupied."
-      ]
+        "This Mughal prince sought common ground between Sufism and Vedanta in Majma-ul-Bahrain. His Sirr-i-Akbar translated more than fifty Upanishads into Persian. Who was he?",
+        "He was Shah Jahan's eldest son and chosen successor, but lost the war of succession. Convicted of heresy, he was executed in 1659 and buried in Humayun's Tomb.",
+        "The brother who defeated and executed this prince later ordered Mathura to be renamed Islamabad."
+      ],
+      "trivia": "German philosopher Arthur Schopenhauer, one of the first major Western thinkers to engage deeply with Indian philosophy, encountered the Upanishads through a Latin translation of Dara Shikoh’s Persian Sirr-i-Akbar. Their ideas about reality, suffering and liberation strongly shaped his work.",
+      "image": {
+        "path": "images/answers/q04-dara-shikoh.jpg",
+        "alt": "A Mughal portrait of the young prince Dara Shikoh",
+        "caption": "A young Dara Shikoh in a Mughal portrait",
+        "credit": "Unknown Mughal artist / Wikimedia Commons",
+        "source": "https://commons.wikimedia.org/wiki/File:Prince_Daro_Shikoh.jpg",
+        "license": "Public domain"
+      }
     },
     {
       "number": 5,
@@ -66,7 +99,16 @@
         "KRISHNA",
         "TEMPLES",
         "PILGRIM"
-      ]
+      ],
+      "trivia": "Mathura gave its name to a major school of ancient Indian sculpture. Its red-sandstone workshops produced devotional images for Buddhism, Jainism and Hinduism, including some of the earliest human representations of the Buddha.",
+      "image": {
+        "path": "images/answers/q05-mathura.jpg",
+        "alt": "A seated Buddha carved in mottled red sandstone at Mathura",
+        "caption": "A Mathura-school Buddha in mottled red sandstone, circa 400 CE",
+        "credit": "Cleveland Museum of Art / Wikimedia Commons",
+        "source": "https://commons.wikimedia.org/wiki/File:Northern_India,_Uttar_Pradesh,_Mathura,_Gupta_period_-_Seated_Buddha_-_1973.214_-_Cleveland_Museum_of_Art.jpg",
+        "license": "CC0"
+      }
     },
     {
       "number": 6,
@@ -83,8 +125,17 @@
       "clues": [
         "According to one traditional Sanskrit derivation, its ancestral name described a place where lotuses and similar plants are sown. This class of architecture served as a vital lifeline across the Indian subcontinent, with antecedents traceable to the Indus Valley Civilisation.",
         "Related structures are found throughout the world and provide communities with a resource essential to daily life. Those discussed here incorporated a deceptively simple innovation: people could approach it directly, even as the resource’s level rose and fell with the seasons.",
-        "One of the grandest surviving examples of this tradition was built in the eleventh century at Patan and is now a UNESCO World Heritage monument. It appears on the reverse of India’s lavender ₹100 banknote in the Mahatma Gandhi (New) Series."
-      ]
+        "An eleventh-century example of this structure in the town of Patan is a UNESCO World Heritage Site. It appears on the reverse of India’s lavender ₹100 banknote."
+      ],
+      "trivia": "Chand Baori at Abhaneri contains 3,500 symmetrical steps descending through 13 storeys. Built to conserve water and offer relief from Rajasthan’s heat, it also served as a community gathering place.",
+      "image": {
+        "path": "images/answers/q06-baoli.png",
+        "alt": "The symmetrical steps of Chand Baori viewed from above",
+        "caption": "The 3,500 symmetrical steps of Chand Baori at Abhaneri",
+        "credit": "Archit Gupta / Wikimedia Commons",
+        "source": "https://commons.wikimedia.org/wiki/File:Chand_Baori.png",
+        "license": "CC BY-SA 4.0"
+      }
     },
     {
       "number": 7,
@@ -95,7 +146,16 @@
         "June",
         "September",
         "November"
-      ]
+      ],
+      "trivia": "Versions of this mnemonic circulated in Latin by the thirteenth century and in English by the fifteenth:\nThirty days hath September,\nApril, June, and November.\nAll the rest have thirty-one,\nExcept February alone,\nWhich has twenty-eight days clear,\nAnd twenty-nine in each leap year.",
+      "image": {
+        "path": "images/answers/q07-months.svg",
+        "alt": "A diagram showing the knuckle mnemonic for remembering month lengths",
+        "caption": "The knuckle mnemonic for remembering month lengths",
+        "credit": "Tijmen Stam / Wikimedia Commons",
+        "source": "https://commons.wikimedia.org/wiki/File:Month_-_Knuckles_(en).svg",
+        "license": "CC BY-SA 3.0"
+      }
     },
     {
       "number": 8,
@@ -108,10 +168,19 @@
         "Avul Pakir Jainulabdeen Abdul Kalam"
       ],
       "clues": [
-        "In 1980, as project director of SLV-III, this aerospace scientist helped place the Rohini RS-1 satellite into orbit using India’s first indigenous satellite launch vehicle. Who was he?",
-        "He later led the Integrated Guided Missile Development Programme, overseeing the development and operationalisation of missiles such as Agni and Prithvi. As Scientific Adviser to the Defence Minister, he was also closely involved in the Pokhran-II nuclear tests of 1998.",
-        "He served as India’s eleventh President from 2002 to 2007 and died while delivering a lecture at IIM Shillong in 2015. Later that year, Odisha’s Wheeler Island, a missile-testing site, was renamed in his honour."
-      ]
+        "In 1980, this SLV-III project director helped place Rohini RS-1 in orbit using India’s first indigenous satellite launch vehicle. Who was he?",
+        "He later led the Integrated Guided Missile Development Programme, overseeing Agni and Prithvi. As Scientific Adviser to the Defence Minister, he helped conduct Pokhran-II in 1998.",
+        "He was also India’s eleventh President and died while lecturing at IIM Shillong in 2015. That year, Odisha’s missile-testing site Wheeler Island was renamed in his honour."
+      ],
+      "trivia": "As a young man, Kalam missed selection as an Indian Air Force pilot by one place. More than fifty years later, as President, he finally flew in a Sukhoi-30MKI for 36 minutes—still describing himself as a student of flying.",
+      "image": {
+        "path": "images/answers/q08-kalam.jpg",
+        "alt": "President A.P.J. Abdul Kalam preparing for a sortie in a Sukhoi-30MKI",
+        "caption": "President Kalam preparing for his Sukhoi-30MKI sortie, 8 June 2006",
+        "credit": "President’s Secretariat / Wikimedia Commons",
+        "source": "https://commons.wikimedia.org/wiki/File:The_President,_Dr._A.P.J._Abdul_Kalam_all_set_for_the_sortie_on_the_Indian_Air_Force%27s_Sukhoi-30_MKI_aircraft_at_the_Lohegaon_Airforce_Station_near_Pune_on_June_8,_2006.jpg",
+        "license": "GODL-India"
+      }
     },
     {
       "number": 9,
@@ -122,7 +191,16 @@
         "Tantra",
         "Famous",
         "Someone"
-      ]
+      ],
+      "trivia": "The Famous Five are actually four children—Julian, Dick, Anne and George—plus Timmy the dog. Enid Blyton wrote 21 original adventures featuring the group between 1942 and 1963.",
+      "image": {
+        "path": "images/answers/q09-five-books.jpg",
+        "alt": "An illustrated page from an eighteenth-century Panchatantra manuscript",
+        "caption": "A fable in an eighteenth-century Panchatantra manuscript from Rajasthan",
+        "credit": "Philadelphia Museum of Art / Wikimedia Commons",
+        "source": "https://commons.wikimedia.org/wiki/File:A_page_from_the_18th-century_Panchatantra_manuscript,_Rajasthan_India.jpg",
+        "license": "Public domain"
+      }
     },
     {
       "number": 10,
@@ -134,10 +212,19 @@
         "Śāntiḥ"
       ],
       "clues": [
-        "The twelfth and longest book of the Mahabharata is dominated by Bhishma’s teachings to Yudhishthira from his bed of arrows. Its principal sections discuss the duties of rulers, conduct during adversity and the path to liberation. What word completes the title of this parva?",
+        "Bhishma’s teachings from his bed of arrows dominate the Mahabharata’s twelfth and longest book. Its sections cover kingship, adversity and liberation. What word completes this parva’s title?",
         "This is also the name given to a class of mantras found in several Upanishads and traditionally recited at the conclusion of Hindu religious ceremonies.",
         "When prefixed by Om, this word forms a familiar condolence message in India, commonly written or spoken after someone’s death."
-      ]
+      ],
+      "trivia": "“Shanti” is traditionally repeated three times at the end of many mantras to seek peace from three sources of disturbance: within oneself (adhyatmika), from other beings and the world (adhibhautika), and from forces beyond human control (adhidaivika).",
+      "image": {
+        "path": "images/answers/q10-shanti.jpg",
+        "alt": "Brahmacharins reciting Vedic chants together",
+        "caption": "Brahmacharins reciting Vedic chants at Belur Math",
+        "credit": "Ramakrishna Math and Ramakrishna Mission Belur Math / Wikimedia Commons",
+        "source": "https://commons.wikimedia.org/wiki/File:Vedic_Chanting_by_Brahmacharins_(15885243999).jpg",
+        "license": "CC BY 2.0"
+      }
     },
     {
       "number": 11,
@@ -148,10 +235,19 @@
         "Bishwo Bangla"
       ],
       "clues": [
-        "In 2018, construction of the XY Gate was completed in an Indian state seeking to project a modern, globally connected identity. Despite its name, it consists of two intersecting arches supporting a circular ring that houses a viewing gallery and a suspended restaurant.",
+        "An Indian state completed the XY Gate in 2018 to project a modern, global identity. Its intersecting arches support a ring housing a viewing gallery and suspended restaurant.",
         "The gate’s original design included a huge globe suspended at its centre. During installation, however, the lifting chain snapped and the globe crashed to the ground, forcing the plan to be abandoned. The globe motif nevertheless appeared in the state’s new emblem adopted in 2018, where it remained until 2026, when the government reverted to the Lion Capital of Ashoka.",
-        "The structure stands in a region renowned for a distinctive architectural tradition in which buildings could feature two, four, eight, or even sixteen sloping roof sections. This tradition ultimately gave the English-speaking world the word for a typically single-storey house."
-      ]
+        "The structure stands in a region known for buildings with two, four, eight or sixteen sloping roof sections. This tradition gave English the word for a single-storey house."
+      ],
+      "trivia": "Bengal’s chala styles grow from the village hut: do-chala has two curved roof slopes, jor-bangla joins two do-chala forms, char-chala slopes on four sides, and at-chala stacks a smaller char-chala tier above another.",
+      "image": {
+        "path": "images/answers/q11-biswa-bangla.jpg",
+        "alt": "An at-chala temple with a tiered curved roof in Halisahar, West Bengal",
+        "caption": "An at-chala temple in Halisahar, West Bengal",
+        "credit": "Amitabha Gupta / Wikimedia Commons",
+        "source": "https://commons.wikimedia.org/wiki/File:At-chala_temple_opposite_to_Nandakishore_Temple_at_Barendra_Gali_of_Halisahar_in_North_24_Parganas,_West_Bengal_05.jpg",
+        "license": "CC BY 4.0"
+      }
     },
     {
       "number": 12,
@@ -162,10 +258,19 @@
         "Tal Katora Stadium"
       ],
       "clues": [
-        "In 1737, Peshwa Bajirao I raided Delhi, then under the Mughal emperor Muhammad Shah. His forces clashed with a Mughal army near a bowl-shaped pond. Which modern-day stadium takes its name from this historic site?",
+        "During his 1737 raid on Delhi, Peshwa Bajirao I’s forces clashed with a Mughal army near a bowl-shaped pond. Which modern stadium takes its name from the site?",
         "In 2010, this indoor stadium hosted the boxing competition at the Commonwealth Games, where India won three gold and four bronze medals but no silver.",
-        "Besides hosting boxers, this stadium has also hosted Zakir Khan for a performance of Haq Se Single, the comedy show associated with his famous ‘sakht launda’ persona."
-      ]
+        "It also hosted Zakir Khan’s Haq Se Single, the comedy show associated with his ‘sakht launda’ persona."
+      ],
+      "trivia": "Built in 1974, Talkatora is Delhi’s oldest indoor stadium. It was upgraded for basketball at the 1982 Asian Games and transformed again for boxing at the 2010 Commonwealth Games.",
+      "image": {
+        "path": "images/answers/q12-talkatora-stadium.jpg",
+        "alt": "A panoramic view inside Talkatora Indoor Stadium in New Delhi",
+        "caption": "Inside Talkatora Indoor Stadium, New Delhi",
+        "credit": "Subhashish Panigrahi / Wikimedia Commons",
+        "source": "https://commons.wikimedia.org/wiki/File:Talkatora_stadium.jpg",
+        "license": "CC BY-SA 3.0"
+      }
     },
     {
       "number": 13,
@@ -182,7 +287,16 @@
       ],
       "clues": [
         "What is the common connection between the 24 questions?"
-      ]
+      ],
+      "trivia": "Two of New Delhi’s principal avenues were originally Kingsway and Queensway. After independence they became Rajpath and Janpath; in 2022, Rajpath was renamed Kartavya Path.",
+      "image": {
+        "path": "images/answers/q13-roads-of-delhi.jpg",
+        "alt": "An aerial night view of India Gate and the illuminated Kartavya Path",
+        "caption": "India Gate and Kartavya Path illuminated at night",
+        "credit": "Narendra Modi Official YouTube Channel / Wikimedia Commons",
+        "source": "https://commons.wikimedia.org/wiki/File:Aerial_night_view_of_India_Gate_and_Kartavya_Path.jpg",
+        "license": "CC BY-SA 4.0"
+      }
     },
     {
       "number": 14,
@@ -193,10 +307,19 @@
         "Nyay"
       ],
       "clues": [
-        "The foundational sutras of this school, attributed to Akshapada Gautama, recognise four valid means of knowledge: pratyaksha (perception), anumana (inference), upamana (comparison) and shabda (reliable testimony). They also distinguish three forms of debate: vada, a truth-seeking discussion; jalpa, an argument pursued for victory; and vitanda, in which one attacks an opponent’s position without defending one’s own. Which school of Hindu philosophy is this?",
+        "Akshapada Gautama’s sutras recognise perception, inference, comparison and testimony as valid means of knowledge. They also classify debate as vada, jalpa or vitanda. Which Hindu philosophical school is this?",
         "The Hindi terms for a court and the judiciary describe them, respectively, as the home of this concept and the institution entrusted with protecting and administering it.",
         "On 1 July 2024, the Bharatiya ______ Sanhita replaced the Indian Penal Code as India’s principal legislation concerning criminal offences."
-      ]
+      ],
+      "trivia": "A classical Nyaya argument has five parts: proposition, reason, example, application and conclusion. Its famous illustration infers fire on a distant hill from visible smoke. Nyaya also uses the ghata–pata example—“a pot is not a cloth”—to explain anyonyabhava, the mutual absence or difference between two things.",
+      "image": {
+        "path": "images/answers/q14-nyaya.jpg",
+        "alt": "The opening ten sutras of the Nyaya Sutra printed in Sanskrit",
+        "caption": "The opening sutras of the Nyaya Sutra, reproduced from an 1896 edition",
+        "credit": "Ms Sarah Welch / Wikimedia Commons",
+        "source": "https://commons.wikimedia.org/wiki/File:Ancient_Nyayasutras_first_ten_sutras_in_Sanskrit.jpg",
+        "license": "CC BY-SA 4.0"
+      }
     },
     {
       "number": 15,
@@ -208,10 +331,19 @@
         "Neethi"
       ],
       "clues": [
-        "Traditionally attributed to the Sanskrit poet and philosopher Bhartrihari, the Shatakatraya comprises three collections of roughly one hundred verses each: the Shringara Shatakam on love, the Vairagya Shatakam on renunciation and a third collection devoted to ethical conduct and practical wisdom. What word completes the title of the third shatakam?",
+        "Bhartrihari’s Shatakatraya comprises three collections of about a hundred verses: Shringara Shatakam on love, Vairagya Shatakam on renunciation, and ______ Shatakam on ethics and practical wisdom. Fill in the blank.",
         "Medical entrance test followed by one produces a guiding principle.",
         "In 2015, the Government of India used this word in the name of the policy think tank that replaced the Planning Commission."
-      ]
+      ],
+      "trivia": "The poet credited with the three Shatakas shares his name with the influential grammarian-philosopher who wrote the Vakyapadiya. Scholars still debate whether these were one Bhartrihari or two different authors.",
+      "image": {
+        "path": "images/answers/q15-neeti.jpg",
+        "alt": "The title page of an 1898 edition of Bhartrihari’s epigrams",
+        "caption": "An 1898 edition of Bhartrihari’s epigrams",
+        "credit": "University of Toronto Libraries / Internet Archive / Wikimedia Commons",
+        "source": "https://commons.wikimedia.org/wiki/File:A_century_of_Indian_epigrams,_chiefly_from_the_Sanskrit_of_Bhartrihari;_(IA_centuryofindian00bhar).pdf",
+        "license": "Public domain"
+      }
     },
     {
       "number": 16,
@@ -224,9 +356,18 @@
       ],
       "clues": [
         "After British India shifted its capital from Calcutta to Delhi in 1911, the growing Bengali community in the new capital sought a permanent religious and cultural home. Its Durga Puja, first held on Baird Road in 1925, eventually outgrew the premises. More than 300 Bengalis petitioned the government for land, and in 1931 the community received an acre on which to establish an institution. What is the institution called?",
-        "The institution’s governing committee was formalised in 1935, with Subhas Chandra Bose as its first president. That same year, three years before he first became president of the Indian National Congress, he addressed a large gathering there.",
+        "The institution is the 'home' of the main character of an upcoming movie starring Akshaye Khanna.",
         "In the Devi Mahatmya, a dark and fearsome goddess emerges from Ambika’s forehead in the midst of battle. She later helps destroy Raktabija, whose every drop of blood spilled on the ground produces another demon like him, by catching and drinking his blood before it can fall. Many places of worship across India, including the one being discussed here, take their name from her."
-      ]
+      ],
+      "trivia": "New Delhi Kali Bari resists the fashion for theme-based Durga Pujas. Its celebration retains the traditional ekchala arrangement—all five deities on one frame—with sholar kaaj ornamentation, while its core rituals have remained largely unchanged since 1936.",
+      "image": {
+        "path": "images/answers/q16-kalibari.jpg",
+        "alt": "New Delhi Kali Bari illuminated at night",
+        "caption": "New Delhi Kali Bari on Mandir Marg",
+        "credit": "Goutam1962 / Wikimedia Commons",
+        "source": "https://commons.wikimedia.org/wiki/File:New_Delhi_Kaii_Bari_2025_09.jpg",
+        "license": "CC BY-SA 4.0"
+      }
     },
     {
       "number": 17,
@@ -237,7 +378,16 @@
         "Bhool Bhulaiyaa",
         "Dhoom",
         "Race"
-      ]
+      ],
+      "trivia": "Jolly LLB is the only franchise here whose first two films had different leading “Jollys”: Arshad Warsi’s Jagdish Tyagi and Akshay Kumar’s Jagdishwar Mishra. The third film brought both lawyers together for a “Jolly versus Jolly” courtroom contest.",
+      "image": {
+        "path": "images/answers/q17-film-trilogies.jpg",
+        "alt": "Actor Arshad Warsi at the success celebration for Jolly LLB",
+        "caption": "Arshad Warsi at the original Jolly LLB’s success celebration, 2013",
+        "credit": "Bollywood Hungama / Wikimedia Commons",
+        "source": "https://commons.wikimedia.org/wiki/File:Arshad-Warsi.jpg",
+        "license": "CC BY 3.0"
+      }
     },
     {
       "number": 18,
@@ -251,9 +401,18 @@
       ],
       "clues": [
         "In 1950, Nehru and Liaquat Ali Khan signed a pact committing India and Pakistan to protect their religious minorities amid communal violence and a growing refugee crisis. One member of Nehru’s cabinet argued that the agreement did not adequately safeguard Hindus in East Bengal and resigned as Minister for Industry and Supply. Who was he?",
-        "In 2001, during observances marking his birth centenary, CSIR instituted a selective doctoral fellowship in his name for some of the highest-ranking candidates in the CSIR–UGC JRF-NET examination. The tribute was particularly fitting because he had served as the first vice-president of CSIR after independence.",
+        "In 2001, CSIR marked his birth centenary with a doctoral fellowship for top CSIR–UGC JRF-NET candidates. He had served as CSIR’s first vice-president after independence.",
         "He campaigned for the complete integration of Jammu and Kashmir with the slogan, ‘Ek desh mein do vidhan, do pradhan aur do nishan nahin chalenge.’ After entering the state without a permit in 1953, he was arrested and died in detention. His supporters later proclaimed, ‘Jahan hue balidan ______, woh Kashmir hamara hai.’"
-      ]
+      ],
+      "trivia": "After the Muslim League withdrew from A. K. Fazlul Huq’s Bengal ministry in 1941, Mookerjee’s Hindu Mahasabha joined Huq’s broad Progressive Coalition alongside the Krishak Praja Party, Forward Bloc and others. Mookerjee served as Finance Minister, and the government became popularly known as the “Syama–Huq ministry.”",
+      "image": {
+        "path": "images/answers/q18-syama-prasad-mookerjee.jpg",
+        "alt": "A portrait of Syama Prasad Mookerjee",
+        "caption": "Syama Prasad Mookerjee, Finance Minister in the Syama–Huq ministry",
+        "credit": "Ministry of Parliamentary Affairs, Government of India / Wikimedia Commons",
+        "source": "https://commons.wikimedia.org/wiki/File:Shyama_Prasad_Mukherjee_portrait_in_Parliament.jpg",
+        "license": "GODL-India"
+      }
     },
     {
       "number": 19,
@@ -264,7 +423,16 @@
         "Angry Men",
         "Years of a Slave",
         "Eyes and Hands"
-      ]
+      ],
+      "trivia": "V. Shantaram’s Do Aankhen Barah Haath was inspired by a real open-prison experiment at Swatantrapur in the princely state of Aundh, where selected prisoners lived and farmed without conventional prison walls. The film later won a Silver Bear at Berlin and became the first Indian film to receive a Golden Globe.",
+      "image": {
+        "path": "images/answers/q19-twelve-films.jpg",
+        "alt": "A black-and-white portrait of filmmaker V. Shantaram",
+        "caption": "V. Shantaram, director and star of Do Aankhen Barah Haath",
+        "credit": "FilmIndia / Wikimedia Commons",
+        "source": "https://commons.wikimedia.org/wiki/File:V._Shantaram.jpg",
+        "license": "Public domain"
+      }
     },
     {
       "number": 20,
@@ -276,10 +444,19 @@
         "Vishnugupta"
       ],
       "clues": [
-        "In 1905, the scholar R. Shamasastry recognised an ancient manuscript on statecraft among materials received by the Oriental Library in Mysore. He published its Sanskrit text in 1909 and an English translation in 1915, restoring a long-lost treatise to modern scholarship. Who is named as its author?",
+        "In 1905, R. Shamasastry identified a lost statecraft manuscript in Mysore. He published its Sanskrit text in 1909 and English translation in 1915. Who is named as its author?",
         "At the beginning of his treatise, he identifies four principal vidyas: anvikshiki, trayi, varta and dandaniti.",
         "Traditionally identified with Vishnugupta, he is remembered as the strategist who helped Chandragupta Maurya overthrow the Nandas and establish the Mauryan Empire."
-      ]
+      ],
+      "trivia": "Tradition identifies Kautilya, Chanakya and Vishnugupta as the same Mauryan statesman. Modern scholars, however, debate whether the surviving Arthashastra is one Mauryan-era work: its language and structure suggest that older material was compiled and revised in several layers over centuries.",
+      "image": {
+        "path": "images/answers/q20-kautilya.jpg",
+        "alt": "A folio of the Arthashastra manuscript written in Grantha script",
+        "caption": "The circa-sixteenth-century Arthashastra manuscript rediscovered at Mysore in 1905",
+        "credit": "Oriental Research Institute, Mysore / Wikimedia Commons",
+        "source": "https://commons.wikimedia.org/wiki/File:Rediscovered_circa_16th_century_Arthashastra_manuscript_in_Grantha_script_from_the_Oriental_Research_Institute_(ORI)_which_was_found_in_1905_06.jpg",
+        "license": "Public domain"
+      }
     },
     {
       "number": 21,
@@ -289,7 +466,16 @@
         "CHRIST",
         "BENGAL",
         "MOTHER"
-      ]
+      ],
+      "trivia": "Mother Teresa was born Anjezë Gonxhe Bojaxhiu. She took her religious name from St Thérèse of Lisieux, a French nun who supported missionaries through prayer and letters but never left her convent. Thérèse became a patron saint of missions; her namesake carried that missionary vocation to India.",
+      "image": {
+        "path": "images/answers/q21-mother-teresa.jpg",
+        "alt": "Mother Teresa wearing her distinctive white sari with blue borders",
+        "caption": "Mother Teresa in India, 1988",
+        "credit": "Evert Odekerken / Wikimedia Commons",
+        "source": "https://commons.wikimedia.org/wiki/File:Mother_Teresa.jpg",
+        "license": "CC BY 2.5"
+      }
     },
     {
       "number": 22,
@@ -301,10 +487,19 @@
         "Lev Nikolayevich Tolstoy"
       ],
       "clues": [
-        "In 1908, the Indian revolutionary Tarak Nath Das asked this thinker how India might free itself from British rule. His response, A Letter to a Hindu, argued that imperial power endured through the cooperation of the ruled and urged resistance grounded in love rather than violence. Gandhi later arranged for the letter to be published in Indian Opinion and began corresponding with him. Who was he?",
+        "In 1908, Tarak Nath Das asked this thinker how India could escape British rule. His A Letter to a Hindu advocated resistance through love rather than violence. Gandhi published it in Indian Opinion and began corresponding with him. Who was he?",
         "In a 1908 essay, Lenin described him as ‘the mirror of the Russian Revolution’, arguing that his writings reflected the anger and aspirations of Russia’s peasantry. Lenin nevertheless criticised his religious pacifism and rejection of revolutionary struggle.",
         "He was a Russian count, moral philosopher and novelist whose best-known works include War and Peace and Anna Karenina."
-      ]
+      ],
+      "trivia": "In 1908, Sergei Prokudin-Gorskii created an extraordinary colour portrait of Tolstoy at Yasnaya Polyana. Colour film was not used: he photographed Tolstoy three times through red, green and blue filters, then combined the monochrome exposures to reconstruct the colours.",
+      "image": {
+        "path": "images/answers/q22-leo-tolstoy.jpg",
+        "alt": "Leo Tolstoy seated in a garden in an early colour photograph",
+        "caption": "Leo Tolstoy at Yasnaya Polyana, photographed in colour in 1908",
+        "credit": "Sergei Prokudin-Gorskii / Leo Tolstoy State Museum / Wikimedia Commons",
+        "source": "https://commons.wikimedia.org/wiki/File:L.N.Tolstoy_Prokudin-Gorsky.jpg",
+        "license": "Public domain"
+      }
     },
     {
       "number": 23,
@@ -319,8 +514,17 @@
       "clues": [
         "During the Quit India Movement, this socialist leader and five fellow prisoners escaped from Hazaribagh Central Jail on Diwali night in November 1942. He subsequently worked underground and helped organise the Azad Dasta to continue resistance against British rule. Who was he?",
         "In 1974, he called for Sampoorna Kranti, or ‘Total Revolution’, at Patna’s Gandhi Maidan. Popularly known as Lok Nayak, he became the leading public face of the movement against Indira Gandhi’s government and was detained during the Emergency.",
-        "The movement he led became a training ground for a generation of politicians. Its participants included future Bihar chief ministers Lalu Prasad Yadav and Nitish Kumar, as well as prominent leaders such as Sushil Kumar Modi and Ravi Shankar Prasad."
-      ]
+        "His movement trained a generation of politicians, including future Bihar chief ministers Lalu Prasad Yadav and Nitish Kumar, alongside Sushil Kumar Modi and Ravi Shankar Prasad."
+      ],
+      "trivia": "After independence, Jayaprakash Narayan left party politics and joined Vinoba Bhave’s Bhoodan movement. At Bodh Gaya in April 1954, he declared Jeevandan—dedicating the rest of his life to the movement. Two decades later, he returned to mass politics to lead the call for Total Revolution.",
+      "image": {
+        "path": "images/answers/q23-jayaprakash-narayan.jpg",
+        "alt": "A portrait of Jayaprakash Narayan",
+        "caption": "Jayaprakash Narayan before the 1950s",
+        "credit": "Unknown photographer / Nehru Memorial Museum and Library / Wikimedia Commons",
+        "source": "https://commons.wikimedia.org/wiki/File:Jayaprakash_Narayan_(cropped).jpg",
+        "license": "Public domain in India"
+      }
     },
     {
       "number": 24,
@@ -335,7 +539,16 @@
         "In 1906, Barindra Kumar Ghose and his associates launched the Bengali publication Jugantar, which openly advocated armed insurrection against British rule and eventually lent its name to a revolutionary group. The venture had the approval of Barindra’s elder brother, an influential nationalist thinker. Who was he?",
         "The revolutionary network with which he was associated included the Anushilan Samiti. Many of its local units operated outwardly as akhadas, where young men practised wrestling, lathi fighting and swordsmanship, while selected recruits received nationalist instruction and preparation for clandestine activity.",
         "He withdrew from politics in 1910 and settled in French-controlled Pondicherry, where he developed Integral Yoga and established an ashram with the Mother. India attained independence on 15 August 1947, his seventy-fifth birthday, when he presented his celebrated ‘Five Dreams’."
-      ]
+      ],
+      "trivia": "Savitri is Sri Aurobindo’s epic retelling of the Mahabharata story in which Savitri confronts the god of death to win back her husband’s life. He expanded this brief legend into nearly 24,000 lines, using the poem to express his spiritual philosophy. He revised it for decades and, after his eyesight deteriorated, continued working on it by dictation.",
+      "image": {
+        "path": "images/answers/q24-sri-aurobindo.jpg",
+        "alt": "A portrait of Sri Aurobindo as a young man",
+        "caption": "Sri Aurobindo around 1900",
+        "credit": "Unknown photographer / Wikimedia Commons",
+        "source": "https://commons.wikimedia.org/wiki/File:Sri_aurobindo.jpg",
+        "license": "Public domain"
+      }
     },
     {
       "number": 25,
@@ -345,7 +558,16 @@
         "RULER",
         "SUNNI",
         "DELHI"
-      ]
+      ],
+      "trivia": "Not every monument in Lodhi Garden belongs to the Lodhi dynasty: Muhammad Shah’s tomb is from the earlier Sayyid dynasty. The monuments once stood within the village of Khairpur; in 1936, the area became Lady Willingdon Park. It was renamed Lodhi Garden after independence and redesigned in 1968.",
+      "image": {
+        "path": "images/answers/q25-lodhi.jpg",
+        "alt": "The octagonal tomb of Muhammad Shah surrounded by trees in Lodhi Garden",
+        "caption": "Muhammad Shah’s Sayyid-era tomb in Lodhi Garden",
+        "credit": "Arian Zwegers / Wikimedia Commons",
+        "source": "https://commons.wikimedia.org/wiki/File:Delhi,_Lodi_Gardens,_Tomb_of_Muhammad_Shah_Sayyid_(15846138165).jpg",
+        "license": "CC BY 2.0"
+      }
     }
   ]
 }

@@ -1,6 +1,6 @@
-# Contributing to Quizingo
+# Contributing to Forbidden Quizzingo
 
-Quizingo is primarily a solo project, but it uses a pull-request workflow to keep `main` stable and every change easy to review. These guidelines also apply to occasional external contributors.
+Forbidden Quizzingo is primarily a solo project, but it uses a pull-request workflow to keep `main` stable and every change easy to review. These guidelines also apply to occasional external contributors.
 
 ## Core Principles
 

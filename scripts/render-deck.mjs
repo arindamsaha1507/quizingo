@@ -78,6 +78,14 @@ function validate() {
         (!Array.isArray(question.acceptedAnswers) || question.acceptedAnswers.some((a) => typeof a !== "string"))) {
       fail(`question ${question.number} has invalid acceptedAnswers`);
     }
+    if (typeof question.trivia !== "string" || !question.trivia.trim()) {
+      fail(`question ${question.number} has no answer-slide trivia`);
+    }
+    const requiredImageFields = ["path", "alt", "caption", "credit", "source", "license"];
+    if (!question.image || requiredImageFields.some((field) =>
+      typeof question.image[field] !== "string" || !question.image[field].trim())) {
+      fail(`question ${question.number} must provide complete answer-slide image metadata`);
+    }
     if (question.format === "wordle") {
       for (const clue of question.clues) wordleStates(clue, question.answer);
     }
@@ -110,6 +118,29 @@ function validate() {
   }
   if (!Number.isFinite(config.scoring?.forbidden?.reward)) {
     fail("scoring.forbidden.reward must be a number");
+  }
+
+  const conclusion = config.conclusion;
+  if (!conclusion || !Array.isArray(conclusion.corners) || conclusion.corners.length !== 4 ||
+      !Array.isArray(conclusion.regions) || conclusion.regions.length !== 5 ||
+      !Array.isArray(conclusion.renaming?.pairs) || conclusion.renaming.pairs.length !== 2 ||
+      !Array.isArray(conclusion.diplomatic?.roads) || conclusion.diplomatic.roads.length !== 4 ||
+      typeof conclusion.partner?.name !== "string" ||
+      !Array.isArray(conclusion.partner?.roles) || conclusion.partner.roles.length !== 2) {
+    fail("conclusion must define the connection patterns and partner acknowledgement");
+  }
+  for (const corner of conclusion.corners) {
+    if (!byNumber.has(corner.questionNumber) ||
+        !["North", "East", "West", "South"].includes(corner.direction) ||
+        typeof corner.road !== "string" || !corner.road.trim()) {
+      fail("conclusion corners contain an invalid question, direction, or road");
+    }
+  }
+  for (const region of conclusion.regions) {
+    if (!config.topics[region.topicId] || typeof region.position !== "string" ||
+        typeof region.connection !== "string" || !region.connection.trim()) {
+      fail("conclusion regions contain an invalid topic or connection");
+    }
   }
   return { byNumber, topicByQuestion };
 }
@@ -148,6 +179,23 @@ function slideHeader(question) {
   return `<div class="question-meta"><span class="topic-chip" style="--topic:${topic.color}">${escapeHtml(topic.colorName)}</span><span class="format-chip ${question.format}">${format.label}</span></div>`;
 }
 
+function renderForbiddenAnswerGrid(question) {
+  if (question.format !== "forbidden") return "";
+  const cells = Array.from({ length: 25 }, (_, index) => {
+    const number = index + 1;
+    if (number === question.number) {
+      return `<div class="forbidden-answer-item current"><span>${number}</span><strong>Forbidden</strong></div>`;
+    }
+    const otherQuestion = byNumber.get(number);
+    const topic = topicByQuestion.get(number);
+    const lengthClass = otherQuestion.answer.length > 45
+      ? " very-long"
+      : otherQuestion.answer.length > 24 ? " long" : "";
+    return `<div class="forbidden-answer-item${lengthClass}" style="--topic:${topic.color}"><span>${number}</span><strong>${escapeHtml(otherQuestion.answer)}</strong></div>`;
+  }).join("");
+  return `<div class="forbidden-answer-heading">The other 24 correct answers</div><div class="forbidden-answer-grid" aria-label="Correct answers to Questions 1 to 12 and 14 to 25">${cells}</div>`;
+}
+
 function renderClueSlide(question) {
   const clueCards = question.clues.map((clue, index) => {
     const stage = index + 1;
@@ -165,6 +213,7 @@ function renderClueSlide(question) {
     slideHeader(question),
     "",
     `<div class="clue-list ${question.format}" data-question="${question.number}">${clueCards}</div>`,
+    renderForbiddenAnswerGrid(question),
     "",
     `<nav class="quiz-nav">${button("#/board", "Board", "secondary")}<span class="advance-note">Advance to reveal the next clue</span>${button(`#/q${question.number}-answer`, "Reveal answer", "answer-button")}</nav>`,
   ].join("\n");
@@ -173,9 +222,17 @@ function renderClueSlide(question) {
 function renderAnswer(question) {
   const topic = topicByQuestion.get(question.number);
   const aliases = question.acceptedAnswers ?? [];
+  const answerLengthClass = question.answer.length > 48
+    ? " very-long-answer"
+    : question.answer.length > 28 ? " long-answer" : "";
+  const triviaLengthClass = question.trivia.includes("\n")
+    ? " poem-trivia"
+    : question.trivia.length > 300 ? " long-trivia" : "";
   const variants = aliases.length
     ? `<div class="accepted"><strong>Also accept:</strong> ${aliases.map(escapeHtml).join(" · ")}</div>`
     : `<div class="accepted muted">No additional accepted variants.</div>`;
+  const image = question.image;
+  const figure = `<figure class="answer-photo"><img src="${escapeHtml(image.path)}" alt="${escapeHtml(image.alt)}"><figcaption>${escapeHtml(image.caption)}</figcaption></figure>`;
   return [
     `## Question ${question.number} · Answer {#q${question.number}-answer}`,
     "",
@@ -183,9 +240,7 @@ function renderAnswer(question) {
     "",
     `<div class="question-meta"><span class="topic-chip" style="--topic:${topic.color}">${escapeHtml(topic.colorName)}</span><span class="format-chip ${question.format}">${formats[question.format].label}</span></div>`,
     "",
-    `<div class="answer-reveal"><span>Answer</span><strong>${escapeHtml(question.answer)}</strong></div>`,
-    "",
-    variants,
+    `<div class="answer-layout${triviaLengthClass}"><div class="answer-copy"><div class="answer-reveal${answerLengthClass}"><span>Answer</span><strong>${escapeHtml(question.answer)}</strong></div>${variants}<div class="answer-trivia"><span>Trivia</span><p>${escapeHtml(question.trivia).replaceAll("\n", "<br>")}</p></div></div>${figure}</div>`,
     "",
     `<nav class="quiz-nav">${button("#/board", "Board", "secondary")}<button class="quiz-button answer-button record-result" type="button" data-record-question="${question.number}">Record result</button></nav>`,
   ].join("\n");
@@ -226,12 +281,73 @@ function renderBoard() {
   ].join("\n");
 }
 
+function connectionSlide(title, id, content, note = "") {
+  return [
+    `## ${title} {#${id}}`,
+    "",
+    `<div class="connection-slide">${content}${note ? `<p class="connection-note">${escapeHtml(note)}</p>` : ""}</div>`,
+    "",
+    `<nav class="quiz-nav connection-nav">${button("#/board", "Board", "secondary")}<span>Advance for the next connection</span></nav>`,
+  ].join("\n");
+}
+
+function renderCornerConnection() {
+  const cards = Object.fromEntries(config.conclusion.corners.map((corner) => {
+    const question = byNumber.get(corner.questionNumber);
+    return [corner.direction.toLowerCase(), `<div class="corner-card ${corner.direction.toLowerCase()}"><span>${escapeHtml(corner.direction)} · Question ${corner.questionNumber}</span><strong>${escapeHtml(question.answer)}</strong><i>→</i><b>${escapeHtml(corner.road)}</b></div>`];
+  }));
+  const content = `<div class="corner-compass">${cards.north}${cards.west}<div class="corner-centre"><strong>Lutyens’ Delhi</strong><span>Four corner answers become four boundary roads</span></div>${cards.east}${cards.south}</div>`;
+  return connectionSlide("The four corners", "connection-corners", content, "Ashoka Road, Mathura Road, Mother Teresa Crescent and Lodhi Road mark the northern, eastern, western and southern edges of Lutyens’ Delhi.");
+}
+
+function renderRegionConnections() {
+  const cards = config.conclusion.regions.map((region) => {
+    const topic = config.topics[region.topicId];
+    const answers = topic.questionNumbers.map((number) => escapeHtml(byNumber.get(number).answer)).join(" · ");
+    return `<div class="region-card ${region.topicId}" style="--topic:${topic.color}"><span>${escapeHtml(region.position)} region · ${escapeHtml(topic.colorName)}</span><strong>${escapeHtml(region.connection)}</strong><p>${answers}</p></div>`;
+  }).join("");
+  return connectionSlide("The directional regions", "connection-regions", `<div class="region-connections">${cards}</div>`, "The position of each group on the board supplies a second layer of organisation.");
+}
+
+function renderRenamingConnection() {
+  const pairs = config.conclusion.renaming.pairs.map((pair) => `<div class="rename-pair"><span>Formerly</span><strong>${escapeHtml(pair.old)}</strong><i>→</i><span>${pair.year}</span><b>${escapeHtml(pair.new)}</b></div>`).join("");
+  return connectionSlide("An extra link in the top region", "connection-renaming", `<div class="rename-pairs">${pairs}</div><div class="rename-history"><strong>The name that moved</strong><p>${escapeHtml(config.conclusion.renaming.note)}</p></div>`);
+}
+
+function renderDiplomaticConnection() {
+  const roads = config.conclusion.diplomatic.roads.map((road, index) => `<div class="diplomatic-road"><span>${index + 1}</span><strong>${escapeHtml(road)}</strong></div>`).join("");
+  return connectionSlide("An extra link in the right region", "connection-diplomatic", `<div class="diplomatic-layout"><div><span class="connection-kicker">Chanakyapuri</span><h3>Delhi’s diplomatic enclave</h3><p>${escapeHtml(config.conclusion.diplomatic.note)}</p></div><div class="diplomatic-roads">${roads}</div></div>`, "The scripture answers therefore connect both by meaning and by geography.");
+}
+
+function renderPartnerSlide() {
+  const partner = config.conclusion.partner;
+  const roles = partner.roles.map((item) => `<div class="partner-role"><strong>${escapeHtml(item.name)}</strong><span>${escapeHtml(item.role)}</span></div>`).join("");
+  const content = `<div class="partner-story"><div class="partner-heading"><span>Partner in crime</span><strong>${escapeHtml(partner.name)}</strong></div><div class="partner-origin">${escapeHtml(partner.origin)}</div><div class="partner-journey"><div><span>Delhi: second home</span><strong>Anwaya + me</strong></div><i>created this quiz for</i><div><span>Delhi: first home</span><strong>Pratyaksha + Harshda</strong></div></div><p class="partner-creation">${escapeHtml(partner.creation)}</p><blockquote>${escapeHtml(partner.turn)}</blockquote><div class="partner-roles">${roles}</div></div>`;
+  return connectionSlide("Partner in crime", "partner-in-crime", content, "Thank you for helping turn a wedding-day idea into this quiz.");
+}
+
+function renderWinnerSlide() {
+  return [
+    "## And the winner is… {#winner}",
+    "",
+    `<div class="winner-slide" data-winner-slide><div class="winner-emblem" aria-hidden="true">★</div><p class="winner-kicker">Forbidden Quizzingo</p><h3 data-winner-title>Complete all 25 questions to crown a winner</h3><p class="winner-message" data-winner-message>The final result will appear here.</p><div class="winner-scorecards"><div class="winner-scorecard player-one"><span data-winner-player="0">Player 1</span><strong data-winner-score="0">0</strong></div><div class="winner-versus">final score</div><div class="winner-scorecard player-two"><span data-winner-player="1">Player 2</span><strong data-winner-score="1">0</strong></div></div></div>`,
+    "",
+    `<nav class="quiz-nav winner-nav">${button("#/board", "Back to board", "secondary")}</nav>`,
+  ].join("\n");
+}
+
 const slides = [renderBoard()];
 for (let number = 1; number <= 25; number += 1) {
   const question = byNumber.get(number);
   slides.push(renderClueSlide(question));
   slides.push(renderAnswer(question));
 }
+slides.push(renderCornerConnection());
+slides.push(renderRegionConnections());
+slides.push(renderRenamingConnection());
+slides.push(renderDiplomaticConnection());
+slides.push(renderPartnerSlide());
+slides.push(renderWinnerSlide());
 
 await writeFile(new URL("quiz.generated.md", rootUrl), `${slides.join("\n\n---\n\n")}\n`);
 console.log(`Generated ${slides.length} quiz slides from JSON sources`);

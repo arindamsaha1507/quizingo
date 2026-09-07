@@ -19,6 +19,18 @@
 - Question 13 uses a unique category called **Forbidden**.
 - Every other question uses the **Ladders** format.
 
+## Concluding Connection Slides
+
+- Add concluding slides only after the user explicitly asks to proceed with implementation.
+- First connection — **The four corners**: Questions 1, 5, 21, and 25 resolve to Ashoka Road, Mathura Road, Mother Teresa Crescent, and Lodhi Road. These roads form the northern, eastern, western, and southern boundaries of Lutyens’ Delhi.
+- Directional-region connections:
+  - **Top**: roads that have been renamed. The verified pairings are Dalhousie Road → Dara Shikoh Road (2017) and Aurangzeb Road → Dr A.P.J. Abdul Kalam Road (2015). Dara Shikoh had first been proposed in 2014 as the new name for Aurangzeb Road, but A.P.J. Abdul Kalam was ultimately chosen; Dara Shikoh’s name was later given to the former Dalhousie Road.
+  - **Left**: structures around India.
+  - **Right**: scriptures of India. Their corresponding roads—Shanti Path, Nyaya Marg, Niti Marg, and Kautilya Marg—are also clustered in Chanakyapuri’s diplomatic/foreign-embassy district.
+  - **Inner diagonals**: the four non-corner, non-centre diagonal cells are all numbers.
+  - **Bottom**: political thinkers.
+- End the concluding sequence with a **Partner in Crime** slide for Anwaya. The quiz idea arose during Anwaya and Pratyaksha’s wedding. Anwaya and the creator, for whom Delhi is a second home, made it for Pratyaksha and Harshda, who regard Delhi as their first home. Preserve the line “why should Pratyaksha have all the fun?” and acknowledge Harshda for test play and Anwaya for increasing the creator’s knowledge.
+
 ### Format Map
 
 **Legend:** <span style="color:#16803c">● Wordle</span> · <span style="color:#2563eb">● String Theory</span> · <span style="color:#c56a00">● Ladders</span> · <span style="color:#dc2626">● Forbidden</span>
