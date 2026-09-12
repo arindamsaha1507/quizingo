@@ -1,0 +1,31 @@
+---
+title: "Forbidden Quizzingo"
+subtitle: "A 5 × 5 quiz board"
+format: revealjs
+---
+
+## Quizmaster notes
+
+- Choose any unopened cell. Selecting it marks it as opened in this browser tab.
+- Advance within a question to reveal its clues one by one, then move to its answer slide.
+- Each clue shows the points available at that reveal stage.
+- On the answer slide, record the winner and points before returning to the board.
+- Question 13 is visually marked **Forbidden**, but this draft does not enforce its lock.
+- Use **Reset Game** to clear player names, scores, and every cell state.
+
+## Set up players {#setup}
+
+<form id="player-setup" class="player-setup">
+  <label>
+    <span class="player-one-text">Player 1</span>
+    <input id="player-one-name" name="playerOne" type="text" autocomplete="off" required placeholder="Enter name">
+  </label>
+  <label>
+    <span class="player-two-text">Player 2</span>
+    <input id="player-two-name" name="playerTwo" type="text" autocomplete="off" required placeholder="Enter name">
+  </label>
+  <p id="setup-error" class="setup-error" role="alert" aria-live="polite"></p>
+  <button class="start-game" type="submit">Start game</button>
+</form>
+
+{{< include quiz.generated.md >}}

@@ -2,31 +2,81 @@
   "topics": {
     "corners": {
       "name": "Border",
+      "color": "#7c3aed",
+      "colorName": "Purple",
       "questionNumbers": [1, 5, 21, 25]
     },
     "top": {
       "name": "Renaming",
+      "color": "#0f766e",
+      "colorName": "Teal",
       "questionNumbers": [2, 3, 4, 8]
     },
     "left": {
       "name": "Structures",
+      "color": "#b45309",
+      "colorName": "Amber",
       "questionNumbers": [6, 11, 12, 16]
     },
     "right": {
       "name": "Scriptures",
+      "color": "#2563eb",
+      "colorName": "Blue",
       "questionNumbers": [10, 14, 15, 20]
     },
     "bottom": {
       "name": "Political Thinkers",
+      "color": "#be185d",
+      "colorName": "Magenta",
       "questionNumbers": [18, 22, 23, 24]
     },
     "diagonals": {
       "name": "Numbers",
+      "color": "#16803c",
+      "colorName": "Green",
       "questionNumbers": [7, 9, 17, 19]
     },
     "centre": {
       "name": "Connector",
+      "color": "#dc2626",
+      "colorName": "Red",
       "questionNumbers": [13]
+    }
+  },
+  "conclusion": {
+    "corners": [
+      { "questionNumber": 1, "road": "Ashoka Road", "direction": "North" },
+      { "questionNumber": 5, "road": "Mathura Road", "direction": "East" },
+      { "questionNumber": 21, "road": "Mother Teresa Crescent", "direction": "West" },
+      { "questionNumber": 25, "road": "Lodhi Road", "direction": "South" }
+    ],
+    "regions": [
+      { "topicId": "top", "position": "Top", "connection": "Roads that were renamed" },
+      { "topicId": "left", "position": "Left", "connection": "Structures around India" },
+      { "topicId": "right", "position": "Right", "connection": "Scriptures of India" },
+      { "topicId": "diagonals", "position": "Inner diagonals", "connection": "Numbers" },
+      { "topicId": "bottom", "position": "Bottom", "connection": "Political thinkers" }
+    ],
+    "renaming": {
+      "pairs": [
+        { "old": "Dalhousie Road", "new": "Dara Shikoh Road", "year": 2017 },
+        { "old": "Aurangzeb Road", "new": "Dr A.P.J. Abdul Kalam Road", "year": 2015 }
+      ],
+      "note": "Dara Shikoh had first been proposed in 2014 as the new name for Aurangzeb Road. A.P.J. Abdul Kalam was ultimately chosen, and Dara Shikoh’s name was later given to the former Dalhousie Road."
+    },
+    "diplomatic": {
+      "roads": ["Shanti Path", "Nyaya Marg", "Niti Marg", "Kautilya Marg"],
+      "note": "The four roads represented by the right region are clustered in Chanakyapuri’s diplomatic and foreign-embassy district."
+    },
+    "partner": {
+      "name": "Anwaya",
+      "origin": "The idea for this quiz came to me during Anwaya and Pratyaksha’s wedding.",
+      "creation": "For Anwaya and me, Delhi is a second home. Together, we created the quiz for Pratyaksha and Harshda, who call Delhi their first home.",
+      "turn": "Then we thought: why should Pratyaksha have all the fun?",
+      "roles": [
+        { "name": "Harshda", "role": "Recruited for test play" },
+        { "name": "Anwaya", "role": "Recruited to increase my knowledge" }
+      ]
     }
   },
   "scoring": {

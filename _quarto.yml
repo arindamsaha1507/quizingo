@@ -1,0 +1,19 @@
+project:
+  type: default
+  output-dir: _site
+  render:
+    - index.qmd
+  pre-render: node scripts/render-deck.mjs
+
+format:
+  revealjs:
+    theme: [default, quiz.scss]
+    embed-resources: true
+    slide-number: true
+    transition: fade
+    navigation-mode: linear
+    controls-layout: edges
+    include-after-body: board-state.html
+
+execute:
+  freeze: false
