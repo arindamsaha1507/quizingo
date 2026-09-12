@@ -1,5 +1,7 @@
 /.quarto/
 /_site/
 /quiz.generated.md
+/Forbidden-Quizzingo.pdf
+/.vscode/
 
 **/*.quarto_ipynb
